@@ -1,0 +1,129 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "title": "StrategySpec v0.1 (planned)",
+  "required": [
+    "id",
+    "version",
+    "instrument",
+    "status",
+    "knowledge_refs",
+    "principle_refs",
+    "hypothesis",
+    "entry",
+    "exit",
+    "risk",
+    "data_snapshot_id"
+  ],
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "instrument": {
+      "const": "TAIFEX:TMF"
+    },
+    "status": {
+      "enum": [
+        "draft",
+        "validated",
+        "rejected"
+      ]
+    },
+    "knowledge_refs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "version"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "version": {
+            "type": "integer"
+          }
+        }
+      }
+    },
+    "principle_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "hypothesis": {
+      "type": "string"
+    },
+    "entry": {
+      "type": "string"
+    },
+    "exit": {
+      "type": "string"
+    },
+    "risk": {
+      "type": "object",
+      "required": [
+        "per_trade_twd",
+        "daily_loss_twd",
+        "max_contracts"
+      ],
+      "properties": {
+        "per_trade_twd": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "exclusiveMinimum": 0
+        },
+        "daily_loss_twd": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "exclusiveMinimum": 0
+        },
+        "max_contracts": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1
+        }
+      }
+    },
+    "data_snapshot_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "timeframe": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "session": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "cost_model_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "invalidation": {
+      "type": "string"
+    }
+  }
+}

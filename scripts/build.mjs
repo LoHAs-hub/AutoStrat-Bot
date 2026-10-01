@@ -1,0 +1,10 @@
+import {mkdirSync,readFileSync,writeFileSync,copyFileSync} from 'node:fs';
+mkdirSync('dist/server',{recursive:true});
+const read=p=>readFileSync(p,'utf8');
+const modules=['src/catalog.mjs','lib/contracts.mjs','lib/demo.mjs','server/api.mjs'];
+const code=modules.map(p=>read(p).replace(/^import .*?;\s*$/gm,'').replace(/\bexport (async )?(function|class|const)/g,'$1$2')).join('\n');
+const files={'/':{type:'text/html; charset=utf-8',body:read('src/index.html')},'/app.js':{type:'text/javascript; charset=utf-8',body:read('src/app.js')},'/style.css':{type:'text/css; charset=utf-8',body:read('src/style.css')},'/favicon.svg':{type:'image/svg+xml',body:read('public/favicon.svg')}};
+const worker=`${code}\nconst staticFiles=${JSON.stringify(files)};\nexport default {async fetch(request,env,ctx){const path=new URL(request.url).pathname;if(path.startsWith('/api/'))return handleApi(request,env);if(!['GET','HEAD'].includes(request.method))return new Response('Method not allowed',{status:405});const file=staticFiles[path];return file?new Response(request.method==='HEAD'?null:file.body,{headers:{'Content-Type':file.type,'X-Content-Type-Options':'nosniff','Referrer-Policy':'strict-origin-when-cross-origin','Cache-Control':'no-cache'}}):new Response('Not found',{status:404});}};\n`;
+writeFileSync('dist/server/index.js',worker);
+writeFileSync('dist/server/wrangler.json',JSON.stringify({name:'strategy-lab',main:'index.js',compatibility_date:'2026-09-01',d1_databases:[{binding:'DB',database_name:'strategy-lab',database_id:'00000000-0000-0000-0000-000000000001',migrations_dir:'../../drizzle'}]},null,2));
+console.log(`Built Worker: ${Buffer.byteLength(worker)} bytes; static interface + shared API.`);

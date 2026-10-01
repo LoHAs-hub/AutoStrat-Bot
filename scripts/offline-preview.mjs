@@ -1,0 +1,16 @@
+import {readFileSync,writeFileSync,mkdirSync} from 'node:fs';
+import {handleApi} from '../server/api.mjs';
+import {openDatabase} from './sqlite-adapter.mjs';
+import {createDemoRun} from '../lib/demo.mjs';
+const db=openDatabase(':memory:');
+const req=new Request('https://offline.example/api/workspace',{headers:{'oai-authenticated-user-id':'offline-example'}});
+const response=await handleApi(req,{DB:db});const data=await response.json();db.close();
+data.runs=[createDemoRun(data.principles,{id:'offline-demonstration',now:new Date().toISOString()})];
+const icon='data:image/svg+xml,'+encodeURIComponent(readFileSync('public/favicon.svg','utf8'));
+const css=readFileSync('src/style.css','utf8')+'\n.offline-notice{padding:10px 18px;background:#f7e9c8;color:#6d511e;font-size:14px;position:sticky;top:0;z-index:12;text-align:center}.offline-notice a{text-decoration:underline}';
+const bootstrap=`const offlineData=${JSON.stringify(data).replace(/</g,'\\u003c')};
+window.fetch=async(url,options={})=>{const path=String(url);if(path==='/api/workspace')return new Response(JSON.stringify(offlineData),{headers:{'Content-Type':'application/json'}});if(path==='/api/demo')return new Response(JSON.stringify(offlineData),{headers:{'Content-Type':'application/json'}});return new Response(JSON.stringify({error:'這是離線介面示例，不會保存修改。請啟動專案或待私人網站發布後使用。'}),{status:503,headers:{'Content-Type':'application/json'}});};
+document.addEventListener('click',event=>{const a=event.target.closest('a[href^="/api/"]');if(a){event.preventDefault();alert('離線示例沒有持久資料可匯出；請在完整工作台使用交接功能。');}},true);`;
+const app=readFileSync('src/app.js','utf8').replaceAll('src="/favicon.svg"',`src="${icon}"`).replaceAll('狀態已儲存','離線示例').replaceAll('伺服器資料庫','示例快照 · 不保存修改');
+let html=readFileSync('src/index.html','utf8').replace('<link rel="stylesheet" href="/style.css">',`<style>${css}</style>`).replace('<script src="/app.js" type="module"></script>',`<script>${bootstrap}</script><script type="module">${app.replace(/<\/script/gi,'<\\/script')}</script>`).replaceAll('src="/favicon.svg"',`src="${icon}"`).replace('href="/favicon.svg"',`href="${icon}"`).replace('<body>','<body><div class="offline-notice">離線介面示例 · 可瀏覽流程與固定示例，不會保存修改。完整工作台請依 README 啟動。</div>');
+mkdirSync('artifacts',{recursive:true});writeFileSync('artifacts/strategy-lab-preview.html',html);console.log('Saved artifacts/strategy-lab-preview.html (read-only offline demo).');
