@@ -1,0 +1,58 @@
+{
+  "source": "invented_synthetic_fixtures",
+  "market_data_used": false,
+  "strategy_effectiveness": "not_evaluated",
+  "same_ohlc_different_order": {
+    "position": {
+      "direction": 1,
+      "stop": 99,
+      "vol": 3,
+      "entry": 103,
+      "risk": 4,
+      "valid": true,
+      "target": 111,
+      "action": "protect",
+      "entryCost": 29.8
+    },
+    "bar": {
+      "source": "synthetic",
+      "open": 103,
+      "high": 112,
+      "low": 98,
+      "close": 104
+    },
+    "slippage_ticks": 0,
+    "fee_per_side_twd": 29.8,
+    "low_first": {
+      "reason": "stop",
+      "exit": 99,
+      "pnl": -99.6,
+      "assumption": "synthetic_low-first; limit_at_target_without_queue_model"
+    },
+    "high_first": {
+      "reason": "limit",
+      "exit": 111,
+      "pnl": 20.4,
+      "assumption": "synthetic_high-first; limit_at_target_without_queue_model"
+    },
+    "pnl_difference_twd": 120,
+    "limitation": "Explicit path alternatives; not a TradingView emulator clone or actual TMF fill reconstruction"
+  },
+  "gap_through_stop": {
+    "stop": 99,
+    "available_open": 95,
+    "result": {
+      "reason": "gap_stop",
+      "exit": 95,
+      "pnl": -139.6,
+      "assumption": "synthetic_low-first; limit_at_target_without_queue_model"
+    }
+  },
+  "slippage_counted_once": {
+    "entry": 49003,
+    "exit": 48897,
+    "net_pnl_twd": -1119.6,
+    "cash_cost_twd": 59.6,
+    "slippage_already_in_prices": true
+  }
+}

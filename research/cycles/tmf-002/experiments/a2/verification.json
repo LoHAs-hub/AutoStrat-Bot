@@ -1,0 +1,57 @@
+{
+  "experiment": "tmf-002-a2",
+  "verified_at": "2026-10-04T10:10:32.387820+00:00",
+  "status": "synthetic_and_packet_checks_only",
+  "logic": {
+    "command": [
+      "node",
+      "--test",
+      "--test-reporter=tap",
+      "research/cycles/tmf-002/experiments/a2/reference.test.mjs"
+    ],
+    "started_at": "2026-10-04T10:10:32.136594+00:00",
+    "finished_at": "2026-10-04T10:10:32.338851+00:00",
+    "exit_code": 0,
+    "log": "verification.tap",
+    "tests": 25,
+    "pass": 25,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "todo": 0,
+    "status": "passed"
+  },
+  "examples": {
+    "command": [
+      "node",
+      "research/cycles/tmf-002/experiments/a2/counterexamples.mjs"
+    ],
+    "started_at": "2026-10-04T10:10:32.339484+00:00",
+    "finished_at": "2026-10-04T10:10:32.379297+00:00",
+    "exit_code": 0,
+    "log": "counterexamples.json"
+  },
+  "packet_status": "passed",
+  "packet_checks": [
+    "existing StrategySpec schema and fixed knowledge versions",
+    "native-access and inherited-chart evidence hashes",
+    "local review links",
+    "original packet audit: 8 checks; historical files untouched"
+  ],
+  "source_sha256": {
+    "tmf002_a2.pine": "3f9dfb0b35221e5cb6e8c72cca59b94cd21716ab81175c6f38869029a89a220a",
+    "reference.mjs": "487a26b2120a05654f78c1fcd00e75790c5ccedc9521361030aa8c47238b2ba6",
+    "reference.test.mjs": "bf3d0b987efdaa39b80605630b719a185fe7734638e0fe99657f953d6aee33e2",
+    "counterexamples.mjs": "07579124df04a3dbf0920ddfb92f055a21deb3281aab941b2bb22fec12b21ce3",
+    "verify.py": "548de81be4f2631c07f1890e00689aec24b2555c2a28e993b515174495d106c0",
+    "SPEC.md": "aaa4dc5b0b325b029251d6f180e95357dbd8e7d9d5c9092435517a1917a1a044",
+    "strategy-A-v2.json": "d1906786609fdf71234a9b92e5a0577e79da77961468ef7c00588588cf41eb0c",
+    "experiment.json": "1e8d122bd5d574ec97f58fe03e440cad3aa01ff90e008b8100795e15fb022168"
+  },
+  "native_pine_compilation": "unrun: anonymous Ctrl+Enter opened Sign in",
+  "native_fill_parity": "unrun",
+  "tmf_historical_backtest": "unrun",
+  "strategy_effectiveness": "unknown; not tested",
+  "market_data_used_in_calculations": false,
+  "all_requested_checks_passed": true
+}

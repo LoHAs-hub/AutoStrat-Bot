@@ -1,0 +1,252 @@
+//@version=6
+// AutoStrat TMF-002 A2.0. Research only; native compilation/performance not yet verified.
+// Complete protocol: SPEC.md. Never interpret synthetic tests as TMF backtest evidence.
+strategy("AutoStrat TMF-002 A2.0 | research", overlay = true,
+     initial_capital = 1000000, currency = currency.NONE,
+     default_qty_type = strategy.fixed, default_qty_value = 1, pyramiding = 0,
+     margin_long = 100, margin_short = 100,
+     commission_type = strategy.commission.cash_per_contract, commission_value = 29.8,
+     slippage = 3, backtest_fill_limits_assumption = 1,
+     calc_on_every_tick = false, calc_on_order_fills = true,
+     process_orders_on_close = false, use_bar_magnifier = false,
+     max_labels_count = 200)
+
+string mode = input.string("Retest", "Entry mode", options = ["Retest", "Direct"])
+int n = input.int(20, "Prior completed bars for breakout", minval = 2)
+int atrLength = input.int(14, "Wilder ATR length", minval = 2)
+int maxWait = input.int(6, "Retest waiting bars", minval = 1)
+int horizon = input.int(12, "Common episode horizon from breakout", minval = 3)
+string directions = input.string("Both", "Research directions", options = ["Both", "Long", "Short"])
+
+string TZ = "Asia/Taipei"
+float tick = syminfo.mintick
+int periodMs = int(timeframe.in_seconds() * 1000)
+if barstate.isfirst
+    if syminfo.prefix != "TAIFEX" or syminfo.ticker != "TMF1!" or syminfo.currency != "TWD" or syminfo.pointvalue != 10 or tick != 1
+        runtime.error("Use TAIFEX:TMF1! with TWD, point value 10 and tick 1. No TXF/MXF substitution.")
+    if not timeframe.isintraday or not chart.is_standard
+        runtime.error("A2 is an intraday standard-candlestick experiment. See SPEC.md for scope.")
+    if horizon < maxWait + 2
+        runtime.error("Common horizon must leave at least two bars after maximum waiting time.")
+
+// Normal-session clock, not a complete expiry/holiday/roll calendar.
+int dayStart = timestamp(TZ, year(time, TZ), month(time, TZ), dayofmonth(time, TZ), 0, 0)
+int minuteOfDay = hour(time, TZ) * 60 + minute(time, TZ)
+int sessionKey = na
+int sessionEnd = na
+if minuteOfDay >= 525 and minuteOfDay < 825
+    sessionKey := dayStart + 525 * 60000
+    sessionEnd := dayStart + 825 * 60000
+else if minuteOfDay >= 900
+    sessionKey := dayStart + 900 * 60000
+    sessionEnd := dayStart + 1740 * 60000
+else if minuteOfDay < 300
+    sessionKey := dayStart - 540 * 60000
+    sessionEnd := dayStart + 300 * 60000
+
+float currentAtr = ta.atr(atrLength)
+float priorHigh = ta.highest(high, n)[1]
+float priorLow = ta.lowest(low, n)[1]
+bool warmed = bar_index >= n and not na(currentAtr) and currentAtr > 0
+bool sessionChanged = na(sessionKey[1]) or na(sessionKey) or sessionKey != sessionKey[1]
+bool gap = not sessionChanged and not na(time_close[1]) and time != time_close[1]
+int remainingMs = na(sessionEnd) ? -1 : sessionEnd - time_close
+bool allowClockEntry = not na(sessionKey) and remainingMs > 2 * periodMs
+bool forceClockExit = na(sessionKey) or remainingMs <= periodMs
+
+var int episodeStart = na
+var int episodeTime = na
+var int episodeEnd = na
+var int episodeDirection = 0
+var float level = na
+var float frozenAtr = na
+var float fixedStop = na
+var bool waiting = false
+var bool entryIssued = false
+var bool exitRequested = false
+varip bool badSession = false
+varip int badSessionKey = na
+
+// Only prior signal state and the actual emulator fill may be used on fill executions.
+varip float activeStop = na
+varip float activeVol = na
+varip float activeTarget = na
+varip float seenPosition = 0.0
+varip int seenClosedTrades = 0
+varip int lastFillBar = -1
+varip int lastSignalBar = -1
+varip int invalidFillCount = 0
+varip int crossSessionFillCount = 0
+varip bool entryFilled = false
+var int submittedBar = na
+var int unfilledEntryCount = 0
+var int episodeCount = 0
+var int signalCount = 0
+var int cancelCount = 0
+var int expiredCount = 0
+varip int gapCount = 0
+varip int lastGapBar = -1
+
+if na(badSessionKey) or sessionKey != badSessionKey
+    badSession := false
+    badSessionKey := sessionKey
+if gap
+    badSession := true
+    if bar_index != lastGapBar
+        gapCount += 1
+        lastGapBar := bar_index
+
+bool fillExecution = strategy.position_size != seenPosition or strategy.closedtrades != seenClosedTrades
+if fillExecution
+    lastFillBar := bar_index
+    if sessionChanged and seenPosition != 0
+        crossSessionFillCount += 1
+    if strategy.position_size != 0 and seenPosition == 0
+        entryFilled := true
+        float d = strategy.position_size > 0 ? 1.0 : -1.0
+        float entryPrice = strategy.position_avg_price
+        float fillRisk = d * (entryPrice - activeStop)
+        bool invalidFill = na(activeStop) or na(activeVol) or fillRisk <= 0 or fillRisk > 2 * activeVol or gap or sessionChanged
+        if invalidFill
+            invalidFillCount += 1
+            strategy.close_all(comment = "invalid fill: next tick exit")
+        else
+            float rawTarget = entryPrice + d * 2 * fillRisk
+            activeTarget := d > 0 ? math.ceil(rawTarget / tick) * tick : math.floor(rawTarget / tick) * tick
+    if strategy.position_size == 0
+        strategy.cancel("A2-L-X")
+        strategy.cancel("A2-S-X")
+        activeStop := na
+        activeVol := na
+        activeTarget := na
+seenPosition := strategy.position_size
+seenClosedTrades := strategy.closedtrades
+
+if strategy.position_size > 0 and not na(activeStop)
+    strategy.exit("A2-L-X", from_entry = "A2-L", stop = activeStop, limit = activeTarget,
+         comment_loss = "stop", comment_profit = "target")
+if strategy.position_size < 0 and not na(activeStop)
+    strategy.exit("A2-S-X", from_entry = "A2-S", stop = activeStop, limit = activeTarget,
+         comment_loss = "stop", comment_profit = "target")
+
+bool markBreakLong = false
+bool markBreakShort = false
+bool markSignalLong = false
+bool markSignalShort = false
+bool markCancel = false
+bool markExpired = false
+bool normalClose = barstate.isconfirmed and not fillExecution and bar_index != lastFillBar and bar_index != lastSignalBar
+if normalClose
+    lastSignalBar := bar_index
+    if sessionChanged
+        waiting := false
+        strategy.cancel("A2-L")
+        strategy.cancel("A2-S")
+        if strategy.position_size != 0
+            strategy.close_all(comment = "unexpected cross-session exposure")
+            crossSessionFillCount += 1
+        episodeStart := na
+        episodeTime := na
+        episodeEnd := na
+        entryIssued := false
+        exitRequested := false
+    if not na(episodeEnd) and bar_index > episodeEnd + 1 and strategy.position_size == 0
+        episodeStart := na
+        episodeTime := na
+        episodeEnd := na
+        waiting := false
+        entryIssued := false
+        exitRequested := false
+
+    bool hadEpisode = not na(episodeStart)
+    bool signalNow = false
+    if hadEpisode
+        if entryIssued and not entryFilled and not na(submittedBar) and bar_index > submittedBar
+            unfilledEntryCount += 1
+            strategy.cancel("A2-L")
+            strategy.cancel("A2-S")
+            entryFilled := true
+        if (badSession or forceClockExit or bar_index >= episodeEnd) and entryIssued and not exitRequested
+            strategy.close_all(comment = badSession ? "data gap exit" : forceClockExit ? "session exit" : "common horizon exit")
+            exitRequested := true
+        if waiting
+            bool failedClose = episodeDirection == 1 ? close < level - 0.5 * frozenAtr : close > level + 0.5 * frozenAtr
+            if badSession or not allowClockEntry or failedClose
+                waiting := false
+                cancelCount += 1
+                markCancel := true
+            else
+                int age = bar_index - episodeStart
+                bool touched = episodeDirection == 1 ? low >= level - 0.25 * frozenAtr and low <= level + 0.25 * frozenAtr and close >= level + 0.25 * frozenAtr and close > open : high >= level - 0.25 * frozenAtr and high <= level + 0.25 * frozenAtr and close <= level - 0.25 * frozenAtr and close < open
+                if age >= 1 and age <= maxWait and touched
+                    waiting := false
+                    float plannedRisk = episodeDirection * (close - fixedStop)
+                    if plannedRisk >= 0.5 * frozenAtr and plannedRisk <= 2 * frozenAtr
+                        signalNow := true
+                    else
+                        cancelCount += 1
+                        markCancel := true
+                else if age >= maxWait
+                    waiting := false
+                    expiredCount += 1
+                    markExpired := true
+
+    if not hadEpisode and strategy.position_size == 0 and not badSession and allowClockEntry and warmed
+        int d = close > priorHigh and directions != "Short" ? 1 : close < priorLow and directions != "Long" ? -1 : 0
+        if d != 0
+            float b = d == 1 ? priorHigh : priorLow
+            float s = d == 1 ? math.floor((b - 0.5 * currentAtr) / tick) * tick : math.ceil((b + 0.5 * currentAtr) / tick) * tick
+            float risk = d * (close - s)
+            if risk >= 0.5 * currentAtr and risk <= 2 * currentAtr
+                episodeStart := bar_index
+                episodeTime := time
+                episodeEnd := bar_index + horizon
+                episodeDirection := d
+                level := b
+                frozenAtr := currentAtr
+                fixedStop := s
+                waiting := mode == "Retest"
+                entryIssued := false
+                exitRequested := false
+                episodeCount += 1
+                markBreakLong := d == 1
+                markBreakShort := d == -1
+                signalNow := mode == "Direct"
+
+    if signalNow and strategy.position_size == 0
+        entryIssued := true
+        entryFilled := false
+        submittedBar := bar_index
+        signalCount += 1
+        activeStop := fixedStop
+        activeVol := frozenAtr
+        activeTarget := na
+        if episodeDirection == 1
+            strategy.entry("A2-L", strategy.long, qty = 1, comment = mode + " confirmed")
+            strategy.exit("A2-L-X", from_entry = "A2-L", stop = activeStop)
+            markSignalLong := true
+        else
+            strategy.entry("A2-S", strategy.short, qty = 1, comment = mode + " confirmed")
+            strategy.exit("A2-S-X", from_entry = "A2-S", stop = activeStop)
+            markSignalShort := true
+
+plot(not na(episodeStart) ? level : na, "Frozen breakout level", color = color.orange, style = plot.style_linebr)
+plot(not na(episodeStart) ? fixedStop : na, "Known initial stop", color = color.red, style = plot.style_linebr)
+plot(strategy.position_size != 0 ? activeTarget : na, "Target from emulator fill", color = color.green, style = plot.style_linebr)
+plotshape(markBreakLong, "Long episode", shape.circle, location.belowbar, color = color.orange, size = size.tiny)
+plotshape(markBreakShort, "Short episode", shape.circle, location.abovebar, color = color.orange, size = size.tiny)
+plotshape(markSignalLong, "Confirmed long signal (not fill)", shape.triangleup, location.belowbar, color = color.lime, size = size.small)
+plotshape(markSignalShort, "Confirmed short signal (not fill)", shape.triangledown, location.abovebar, color = color.red, size = size.small)
+plotshape(markCancel, "Cancelled", shape.xcross, location.top, color = color.gray, size = size.tiny)
+plotshape(markExpired, "Expired", shape.square, location.top, color = color.gray, size = size.tiny)
+plot(episodeCount, "Episode count (compare between modes)", display = display.data_window)
+plot(episodeTime, "Breakout event time (Unix ms; compare between modes)", display = display.data_window)
+plot(not na(episodeStart) ? episodeDirection : na, "Breakout event direction", display = display.data_window)
+plot(signalCount, "Confirmed signal count", display = display.data_window)
+plot(cancelCount, "Cancelled waiting events", display = display.data_window)
+plot(expiredCount, "Expired waiting events", display = display.data_window)
+plot(invalidFillCount, "Invalid/gap fills retained", display = display.data_window)
+plot(gapCount, "Observed same-session gaps", display = display.data_window)
+plot(crossSessionFillCount, "Unexpected cross-session exposure (inspect; ROD not proven)", display = display.data_window)
+plot(unfilledEntryCount, "Expected next-bar entries not observed (inspect funding/data)", display = display.data_window)
+plot(frozenAtr, "ATR frozen at breakout", display = display.data_window)

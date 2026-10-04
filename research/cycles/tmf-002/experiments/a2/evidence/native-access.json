@@ -1,0 +1,23 @@
+{
+  "source_url": "https://www.tradingview.com/pine/",
+  "started_at": "2026-10-04T09:44:16.188011+00:00",
+  "finished_at": "2026-10-04T09:44:36.206679+00:00",
+  "context": "fresh anonymous Chromium; supported public editor UI; TLS verification enabled",
+  "steps": [
+    "Opened public Pine Editor successfully",
+    "Edited a minimal v6 indicator probe through the editor UI",
+    "Pressed Ctrl+Enter",
+    "Sign in dialog appeared; no compiler diagnostic or chart result was obtained",
+    "A later Save click was intercepted by the existing dialog; Save was not independently evaluated"
+  ],
+  "code_submitted": "//@version=6\nindicator(\"AutoStrat access probe\", overlay=true)\nplot(na)\n",
+  "a2_source_compilation_attempted": false,
+  "native_compilation_result": "not_obtained",
+  "credentials_accessed": false,
+  "account_created": false,
+  "publication_attempted": false,
+  "paid_service_used": false,
+  "raw_market_data_extracted": false,
+  "screenshot": "native-sign-in.png",
+  "limitation": "This tests this anonymous editor route, not every TradingView account tier or authenticated route."
+}

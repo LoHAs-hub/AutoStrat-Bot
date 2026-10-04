@@ -1,0 +1,26 @@
+{
+  "id": "tmf-002-A",
+  "version": 2,
+  "instrument": "TAIFEX:TMF",
+  "status": "draft",
+  "knowledge_refs": [
+    {"id": "K01", "version": 1},
+    {"id": "K02", "version": 1},
+    {"id": "K03", "version": 1},
+    {"id": "K05", "version": 1},
+    {"id": "K06", "version": 1},
+    {"id": "K08", "version": 1},
+    {"id": "K09", "version": 1},
+    {"id": "K10", "version": 1}
+  ],
+  "principle_refs": ["P001"],
+  "hypothesis": "同一批突破事件中，等待價格回測突破位並收回可能改善扣成本後的事件結果或尾部損失；漏單與延遲也可能使結果變差。尚未以微台行情測試；SPEC.md 是完整規則。",
+  "entry": "TradingView TAIFEX:TMF1! 標準日內 K 線，30 分鐘為未調校起點。N20 前根極值、Wilder ATR14，突破時凍結 B/V/S。Direct 於突破完成根確認；Retest 等待 M6 根，接近帶 ±0.25V 並收回。訊號風險 0.5–2V，下一可用 tick 模擬市價成交。兩模式共用事件與盤末截止，一口不加碼。",
+  "exit": "S 為突破水平 B 外側 0.5V 並向外取整 tick，與進場委託同時提交保護。模擬成交 E 後設定 2R 目標；R 非正或大於 2V，保留已成交紀錄並下一 tick 市價退出。共同期限 b+H12、盤末提前或資料缺口退出。不得事後刪除跳空失效成交。",
+  "risk": {"per_trade_twd": null, "daily_loss_twd": null, "max_contracts": 1},
+  "data_snapshot_id": null,
+  "timeframe": "30m initial development choice; unoptimized, no 30m market data evaluated",
+  "session": "正常日夜盤；盤內實驗，夜盤午夜不重置。同盤缺口停新單到下一盤；到期例外及意外跨盤曝險須在原生逐筆核對。不是完整交易所日曆。",
+  "cost_model_id": "tmf-002-a2-reference-price-tax-v1",
+  "invalidation": "同一事件首次確認不符風險即取消；收盤失效、資料缺口、盤末截止優先於訊號，M 最後根仍可確認。取消／逾時仍保留共同冷卻。登入阻礙使 Pine 編譯、成交語意、事件配對、微台歷史績效與成本敏感度未執行，維持 draft。"
+}

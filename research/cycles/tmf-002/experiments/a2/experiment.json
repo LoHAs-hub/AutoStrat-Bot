@@ -1,0 +1,136 @@
+{
+  "id": "tmf-002-a2",
+  "version": "A2.0",
+  "date_taipei": "2026-10-04",
+  "base_commit": "df8d2b76a0eeeec1308ccc8fd99280805dd8c407",
+  "scope": "autonomous research and implementation inside existing project; no live orders or paid services",
+  "instrument": "TAIFEX:TMF1!",
+  "actual_market_data_source": "TradingView inherited visual charts only",
+  "inherited_source_metadata": "../../sources.json",
+  "inherited_observations": "../../OBSERVATIONS.md",
+  "hypothesis_status": "retained_unvalidated",
+  "comparison": "same prequalified breakout episodes: Retest vs Direct; common frozen stop and horizon",
+  "data_use": {
+    "inherited_chart_window_used_for_hypothesis_selection": true,
+    "inherited_visual_timeframes": [
+      "1D",
+      "1h"
+    ],
+    "new_market_data_collected": false,
+    "30m_data_read": false,
+    "historical_market_calculations_executed": false,
+    "quarantined_data_used": false,
+    "txf_numerical_data_used": false,
+    "independent_holdout_evaluated": false
+  },
+  "parameters": {
+    "initial_chart_timeframe": "30m",
+    "N": 20,
+    "wilder_ATR": 14,
+    "M": 6,
+    "H": 12,
+    "touch_band_ATR": 0.25,
+    "stop_offset_ATR": 0.5,
+    "signal_risk_ATR": [
+      0.5,
+      2
+    ],
+    "fill_risk_ATR_upper": 2,
+    "target_R": 2,
+    "contracts": 1,
+    "directions": "symmetric formulas; report long and short separately"
+  },
+  "changes_before_market_testing": [
+    "60m to 30m for normal-session opportunity length; no 30m data inspected",
+    "stop moved from waiting-period extreme to frozen breakout level offset for shared comparison",
+    "holding/cooldown deadline anchored to breakout episode",
+    "first experiment exits within normal sessions; three-loss trading-day filter omitted as a confounder"
+  ],
+  "cost_model": {
+    "id": "tmf-002-a2-reference-price-tax-v1",
+    "point_value_twd": 10,
+    "tick_points": 1,
+    "commission_per_side_twd_assumed": 20,
+    "tax_rate_general_index_futures": 2e-05,
+    "reference_price_points": 49000,
+    "tax_per_side_twd_approx": 9.8,
+    "pine_cash_per_contract_per_side": 29.8,
+    "pine_slippage_ticks": 3,
+    "limit_verification_ticks": 1,
+    "actual_fee_or_slippage_calibrated": false,
+    "tax_rounding_or_exact_tmf_applicability_checked": false,
+    "double_subtract_slippage": false
+  },
+  "research_capital": {
+    "twd_virtual": 1000000,
+    "pine_margin_percent": 100,
+    "personal_risk_budget": null,
+    "not_an_account_recommendation": true
+  },
+  "experiment_history": {
+    "historical_performance_runs": 0,
+    "performance_parameter_search_trials": 0,
+    "native_compilations": 0,
+    "initial_synthetic_test_run": "24/25 passed; the cutoff fixture expired earlier than the intended cutoff. Moved synthetic breakout from 12:55 to 13:00 so cutoff precedence is actually exercised; strategy rule not changed to make assertion pass.",
+    "source_manual_review": "added exchange identity guard, gap diagnostic counted on fill bars, and breakout timestamp for native episode pairing"
+  },
+  "validation_layers": {
+    "local_synthetic_logic": "verification.json",
+    "native_pine_compile": "unrun",
+    "native_realtime_reload_or_repaint_check": "unrun",
+    "native_fill_model_parity": "unrun",
+    "tmf_historical_performance": "unrun",
+    "cost_sensitivity": "unrun",
+    "out_of_sample": "unrun"
+  },
+  "blocker": {
+    "observed": "anonymous public editor Ctrl+Enter displayed Sign in",
+    "evidence": "evidence/native-access.json",
+    "impact": "cannot claim Pine compilation, TMF signals or Strategy Tester results",
+    "minimum_next_capability": "existing authorized signed-in TradingView native execution through supported access, or user-operated native run with readable results; do not request passwords/cookies; no paid upgrade assumed"
+  },
+  "source_records": [
+    {
+      "url": "https://www.tradingview.com/pine-script-docs/concepts/strategies/",
+      "status": 200,
+      "retrieved_at": "2026-10-04T09:41:41.931619+00:00",
+      "decoded_sha256": "1f6fe851cbbeff9e2b43d0af85159e9f9a9ad311e6d0ec1606475b2ef358c80a",
+      "id": "TV-PINE-STRATEGIES",
+      "use": "native execution/cost/session semantics; no market data"
+    },
+    {
+      "url": "https://www.tradingview.com/pine-script-docs/concepts/time/",
+      "status": 200,
+      "retrieved_at": "2026-10-04T09:41:42.450080+00:00",
+      "decoded_sha256": "dc763490ac5e59186b53fd1b3d5e43435d1c5c261fbeee7b96ce0de9540c0d35",
+      "id": "TV-PINE-TIME",
+      "use": "native execution/cost/session semantics; no market data"
+    }
+  ],
+  "evidence": [
+    {
+      "path": "evidence/native-sign-in.png",
+      "role": "observed UI access gate",
+      "bytes": 863818,
+      "sha256": "77cd0022b1a42a9d3d00c0e17efb9b92a92e77e77bd4329df2079ecb5e249523"
+    },
+    {
+      "path": "evidence/native-access.json",
+      "role": "sanitized access record",
+      "bytes": 1108,
+      "sha256": "9dbcfe5c4ba3b2dfdb146d373d32ce33add91c18d9cebfe37547904fc89b8301"
+    },
+    {
+      "path": "../../evidence/hourly.png",
+      "role": "inherited exploratory TMF 1h chart, not validation data",
+      "bytes": 179013,
+      "sha256": "951f4cbee62f623300e879d4f094a76a14ec033a8f64649f0b6d238e6eac5033"
+    },
+    {
+      "path": "../../evidence/daily.png",
+      "role": "inherited exploratory TMF daily chart, not validation data",
+      "bytes": 163872,
+      "sha256": "5429eb3a98f8aa95fc10841e6c0203e518f92a9b084b50659e10189ee18fa6a6"
+    }
+  ]
+}

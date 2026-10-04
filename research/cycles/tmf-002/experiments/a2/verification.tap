@@ -1,0 +1,160 @@
+TAP version 13
+# Subtest: warmup never creates a breakout from insufficient history
+ok 1 - warmup never creates a breakout from insufficient history
+  ---
+  duration_ms: 4.019818
+  type: 'test'
+  ...
+# Subtest: breakout excludes current high and freezes ATR/stop from known data
+ok 2 - breakout excludes current high and freezes ATR/stop from known data
+  ---
+  duration_ms: 1.011218
+  type: 'test'
+  ...
+# Subtest: direct mode confirms on breakout; retest mode waits for a later completed bar
+ok 3 - direct mode confirms on breakout; retest mode waits for a later completed bar
+  ---
+  duration_ms: 0.417314
+  type: 'test'
+  ...
+# Subtest: touch from above is allowed without first trading below the breakout level
+ok 4 - touch from above is allowed without first trading below the breakout level
+  ---
+  duration_ms: 0.454084
+  type: 'test'
+  ...
+# Subtest: unconfirmed price excursions cannot mutate committed signal state
+ok 5 - unconfirmed price excursions cannot mutate committed signal state
+  ---
+  duration_ms: 0.592302
+  type: 'test'
+  ...
+# Subtest: first price confirmation that fails risk cancels instead of shopping for a later entry
+ok 6 - first price confirmation that fails risk cancels instead of shopping for a later entry
+  ---
+  duration_ms: 0.374762
+  type: 'test'
+  ...
+# Subtest: close invalidation cancels; subsequent recovery does not revive the same event
+ok 7 - close invalidation cancels; subsequent recovery does not revive the same event
+  ---
+  duration_ms: 0.426864
+  type: 'test'
+  ...
+# Subtest: a wick through the failure threshold does not equal a close invalidation
+ok 8 - a wick through the failure threshold does not equal a close invalidation
+  ---
+  duration_ms: 0.383635
+  type: 'test'
+  ...
+# Subtest: the final waiting bar remains eligible before timeout is applied
+ok 9 - the final waiting bar remains eligible before timeout is applied
+  ---
+  duration_ms: 1.716443
+  type: 'test'
+  ...
+# Subtest: expired events remain in common cooldown and cannot enter on a late retest
+ok 10 - expired events remain in common cooldown and cannot enter on a late retest
+  ---
+  duration_ms: 0.804726
+  type: 'test'
+  ...
+# Subtest: direct and retest use the same event cohort despite different signal times
+ok 11 - direct and retest use the same event cohort despite different signal times
+  ---
+  duration_ms: 0.704647
+  type: 'test'
+  ...
+# Subtest: holding deadline belongs to the breakout event, not the later confirmation
+ok 12 - holding deadline belongs to the breakout event, not the later confirmation
+  ---
+  duration_ms: 0.394499
+  type: 'test'
+  ...
+# Subtest: same-session missing bars cancel waiting and disable new entries for that session
+ok 13 - same-session missing bars cancel waiting and disable new entries for that session
+  ---
+  duration_ms: 0.172221
+  type: 'test'
+  ...
+# Subtest: midnight stays within one Taiwan night session; day/night boundary resets waiting
+ok 14 - midnight stays within one Taiwan night session; day/night boundary resets waiting
+  ---
+  duration_ms: 0.26536
+  type: 'test'
+  ...
+# Subtest: session-end cutoff vetoes new confirmations before any next-session order
+ok 15 - session-end cutoff vetoes new confirmations before any next-session order
+  ---
+  duration_ms: 0.274926
+  type: 'test'
+  ...
+# Subtest: long/short signal formulas are symmetric under a price reflection
+ok 16 - long/short signal formulas are symmetric under a price reflection
+  ---
+  duration_ms: 0.346902
+  type: 'test'
+  ...
+# Subtest: future suffix changes cannot alter earlier emitted events
+ok 17 - future suffix changes cannot alter earlier emitted events
+  ---
+  duration_ms: 0.587107
+  type: 'test'
+  ...
+# Subtest: duplicate completed bars and undeclared real-market inputs are rejected
+ok 18 - duplicate completed bars and undeclared real-market inputs are rejected
+  ---
+  duration_ms: 0.686992
+  type: 'test'
+  ...
+# Subtest: entry uses the next open, including adverse slippage, rather than confirmation close
+ok 19 - entry uses the next open, including adverse slippage, rather than confirmation close
+  ---
+  duration_ms: 0.443791
+  type: 'test'
+  ...
+# Subtest: gap beyond stop and excessive fill risk remain filled failures, never deleted signals
+ok 20 - gap beyond stop and excessive fill risk remain filled failures, never deleted signals
+  ---
+  duration_ms: 0.12357
+  type: 'test'
+  ...
+# Subtest: favorable entry gaps need positive risk, not the pre-signal minimum again
+ok 21 - favorable entry gaps need positive risk, not the pre-signal minimum again
+  ---
+  duration_ms: 0.063906
+  type: 'test'
+  ...
+# Subtest: unknown intrabar order produces distinct outcomes when stop and target both touch
+ok 22 - unknown intrabar order produces distinct outcomes when stop and target both touch
+  ---
+  duration_ms: 0.264873
+  type: 'test'
+  ...
+# Subtest: a gap through protection is filled from the available open, not the stop price
+ok 23 - a gap through protection is filled from the available open, not the stop price
+  ---
+  duration_ms: 0.080544
+  type: 'test'
+  ...
+# Subtest: slippage already in fills is not deducted again; one TMF point is 10 TWD
+ok 24 - slippage already in fills is not deducted again; one TMF point is 10 TWD
+  ---
+  duration_ms: 0.06821
+  type: 'test'
+  ...
+# Subtest: known session gaps are not falsely labeled missing same-session data
+ok 25 - known session gaps are not falsely labeled missing same-session data
+  ---
+  duration_ms: 0.208181
+  type: 'test'
+  ...
+1..25
+# tests 25
+# suites 0
+# pass 25
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 145.616381
