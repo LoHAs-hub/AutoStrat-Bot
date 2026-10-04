@@ -1,5 +1,9 @@
 # 執行進度
 
+- 2026-10-04（台北）：確認原審閱成果、三張圖、32 檔原 ZIP manifest 與八項資料包完整性檢查。原成果／交接 31 檔提交 `b98227939e35c8e4521062fcf5994aab6a03c51b`，以 `git push origin HEAD:refs/heads/main` 普通推送至既有 LoHAs-hub/AutoStrat-Bot，遠端 hash 核對一致。沒有新 repo、公開性變更、force push 或應用修改。
+- 2026-10-04（台北）：完成候選 A 內容審閱並新增 REVIEW-A.md／DELIVERY.md；指出盤末委託、收回定義、狀態／風控與 Pine 成本模型缺漏，保留原 v1 草案。建議先做原生 Pine 指標／狀態功能驗收，等待使用者整包確認；沒有新行情研究、最佳化、編譯或回測。
+- 2026-10-04（台北）：原 manifest／run／驗證檔保留 10/2 研究快照；後續交接現況由 DELIVERY、REVIEW-A 與本文件說明。ZIP、生成的 dist、Python 快取與暫存／隔離行情未提交，原包相關可版本管理成果已拆開上 GitHub。
+
 - 2026-10-02（台北，tmf-002 研究）：納入最新範圍，允許 TXF 心得作機制參考、實際分析／測試限微台；移除固定週期、根數、窗口、數量與驗證法硬限制。原提案封存為 TASK-v0.1.md。
 - 2026-10-02（台北）：實際在 TradingView 讀到 TAIFEX:TMF1! 日線與 1h 圖，保留圖表／時間與免費帳號提示證據。兩篇 TXF 文章保留原商品，不使用其量價／成本／績效。
 - 2026-10-02（台北）：產出 tmf-002 REPORT／OBSERVATIONS／CANDIDATES／COSTS、A/B StrategySpec 草案及可重跑微台成本情境。成本／風險是假設算術，不是歷史測試；格式／引用／證據 hash 與重算結果見 validation.json。
