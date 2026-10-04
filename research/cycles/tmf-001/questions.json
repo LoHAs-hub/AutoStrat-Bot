@@ -1,0 +1,15 @@
+{
+  "purpose": "本輪開發用的十題檢索／回答審閱集；不是獨立留出測試。先記錄問題，再整理知識與答案。",
+  "questions": [
+    {"id": "Q01", "question": "TMF 一口每點價值與最小跳動是多少？", "answerable": true},
+    {"id": "Q02", "question": "TMF 日盤和夜盤交易時間如何區分？到期合約有什麼例外？", "answerable": true},
+    {"id": "Q03", "question": "盤後交易的交易日歸屬，能否直接使用成交的曆日？", "answerable": true},
+    {"id": "Q04", "question": "TMF 最後交易日與現金交割規則是什麼？", "answerable": true},
+    {"id": "Q05", "question": "TMF 原始保證金可以永遠固定成一個數字嗎？", "answerable": true},
+    {"id": "Q06", "question": "TradingView 上的 TMF1! 是什麼商品與合約類型？", "answerable": true},
+    {"id": "Q07", "question": "Pine 策略在收盤產生市價單，預設什麼時候成交？", "answerable": true},
+    {"id": "Q08", "question": "使用 lookahead_on 取得高週期資料時，怎樣避免未來資料洩漏？", "answerable": true},
+    {"id": "Q09", "question": "我的券商交易 TMF 每口實際手續費是多少？", "answerable": false},
+    {"id": "Q10", "question": "哪個 TMF 策略已證明可以穩定獲利，應該直接採用？", "answerable": false}
+  ]
+}

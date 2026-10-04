@@ -1,0 +1,168 @@
+{
+  "cycle_id": "tmf-002",
+  "created_at": "2026-10-02T15:08:48.048757+00:00",
+  "purpose": "reviewable observations/draft rules/synthetic cost arithmetic, not empirical strategy validation",
+  "market_csv_included": false,
+  "files": [
+    {
+      "path": "AGENTS.md",
+      "sha256": "0ed9da3d3355c4b4b6857155d218ce9251a0f0427160f24de506557eaed858ab",
+      "bytes": 3062
+    },
+    {
+      "path": "docs/HANDOFF.md",
+      "sha256": "31e66ddcc2f9b93d1e5bde08b8900301e0235dc24f87a04e4114546bfba20776",
+      "bytes": 8190
+    },
+    {
+      "path": "docs/PROGRESS.md",
+      "sha256": "617474f79c11f17b77f2f1ab9128f0f939ce3b50931e609204e7b1b1f1e708a4",
+      "bytes": 4900
+    },
+    {
+      "path": "docs/PROJECT.md",
+      "sha256": "240d14505194b2a59a694b7b3854126abb0c1bab35ef2a323ae8d6994d06e7f9",
+      "bytes": 9814
+    },
+    {
+      "path": "research/cycles/tmf-001/REPORT.md",
+      "sha256": "6ffe7bde21d93bc203880cb00fcc1ad06f36de9de3bc08305e296fd9c1f660f5",
+      "bytes": 17992
+    },
+    {
+      "path": "research/cycles/tmf-001/answer-review.json",
+      "sha256": "38780fb060d50854b102a85c0c6a29e732289b88ed4a003e3be5b35a5880b27a",
+      "bytes": 2911
+    },
+    {
+      "path": "research/cycles/tmf-001/knowledge.json",
+      "sha256": "47645e36c5542c2814d20f0e58cb7821229e049bcf265d25248436b9f63def2c",
+      "bytes": 18237
+    },
+    {
+      "path": "research/cycles/tmf-001/project-validation.json",
+      "sha256": "4a54746f4d86a4c7ca398537714c0947ef1c8b2612d6b3313e7a0aa44b091747",
+      "bytes": 750
+    },
+    {
+      "path": "research/cycles/tmf-001/questions.json",
+      "sha256": "c52876d27775927c48f2fd5f6608643fd4ad8e17e20a354a4cf55fea9d38b21a",
+      "bytes": 1347
+    },
+    {
+      "path": "research/cycles/tmf-001/run.json",
+      "sha256": "62e259197d36c777b3435f6681cb8d8acb62826f81f133ff2f2d48e13efb1f5d",
+      "bytes": 3017
+    },
+    {
+      "path": "research/cycles/tmf-001/sources.json",
+      "sha256": "d668d42c61ecf1eb853517df8772b5fb959d50eb53c2f2635522df29b9897641",
+      "bytes": 12519
+    },
+    {
+      "path": "research/cycles/tmf-001/validation.json",
+      "sha256": "baba5b08d293a7e064ed047bdcdcb6d6639dd26d021c685f38391199cc7f3c63",
+      "bytes": 13829
+    },
+    {
+      "path": "research/cycles/tmf-001/verify.py",
+      "sha256": "35e8ab4f6d8392cd3eb9386eaf229c49d4956c3f648cff9cc65e87093a0ec2c2",
+      "bytes": 10146
+    },
+    {
+      "path": "research/cycles/tmf-002/CANDIDATES.md",
+      "sha256": "4462a75202a54945e807761775a28d211ec07d5acd9d72b2d5d0fe4570242025",
+      "bytes": 9878
+    },
+    {
+      "path": "research/cycles/tmf-002/COSTS.md",
+      "sha256": "3aaa4670f430157e123e18553bbed61c53ce9eb56bf75657ada2252ab7cfcd6e",
+      "bytes": 3489
+    },
+    {
+      "path": "research/cycles/tmf-002/OBSERVATIONS.md",
+      "sha256": "895a1766e630b87ca59f9bfed180e6a5bce723b8344ce97638b8da1b63780750",
+      "bytes": 5746
+    },
+    {
+      "path": "research/cycles/tmf-002/REPORT.md",
+      "sha256": "44a7921830c8f7290f357287ad22810e9d42bc4ff3c7038c6d3e42dac4f5ac49",
+      "bytes": 5238
+    },
+    {
+      "path": "research/cycles/tmf-002/TASK-v0.1.md",
+      "sha256": "8e427fa727932de0d418431e874cde65cddeed9a7b5e43a259fd813881318f89",
+      "bytes": 9240
+    },
+    {
+      "path": "research/cycles/tmf-002/TASK.md",
+      "sha256": "e051d13f1bdd466b6bc5b5448a235cabdfedd239e6addeeb03c35555167de14d",
+      "bytes": 6231
+    },
+    {
+      "path": "research/cycles/tmf-002/calculate_costs.py",
+      "sha256": "92f615406c23369932999d8de3721d13900949757ac320947a55280f1339687c",
+      "bytes": 2618
+    },
+    {
+      "path": "research/cycles/tmf-002/cost-results.json",
+      "sha256": "543e76805660034561c29d2f62124ea2dc930e375f39ffaa74c4dfc955efe33c",
+      "bytes": 3126
+    },
+    {
+      "path": "research/cycles/tmf-002/evidence/daily.png",
+      "sha256": "5429eb3a98f8aa95fc10841e6c0203e518f92a9b084b50659e10189ee18fa6a6",
+      "bytes": 163872
+    },
+    {
+      "path": "research/cycles/tmf-002/evidence/hourly.png",
+      "sha256": "951f4cbee62f623300e879d4f094a76a14ec033a8f64649f0b6d238e6eac5033",
+      "bytes": 179013
+    },
+    {
+      "path": "research/cycles/tmf-002/evidence/indicator-account-gate.png",
+      "sha256": "bc871cf4c996b53825959f6fda77606f6d6b33365087d90c5a83daad3b8c3d0a",
+      "bytes": 346033
+    },
+    {
+      "path": "research/cycles/tmf-002/run.json",
+      "sha256": "b78f7eeed5f984eba374eb25b6c24a0c1799093d3e2c835f2fdf1908f33437b9",
+      "bytes": 3369
+    },
+    {
+      "path": "research/cycles/tmf-002/sources.json",
+      "sha256": "829a83ec8ef029e9ae25120af0f3bc282297ea046b9e9a31f2e66862d05bb843",
+      "bytes": 6511
+    },
+    {
+      "path": "research/cycles/tmf-002/strategy-A.json",
+      "sha256": "f2ee9f576669e22390ef30043b1a111a9eda955997d67295c1102b781f1be391",
+      "bytes": 1809
+    },
+    {
+      "path": "research/cycles/tmf-002/strategy-B.json",
+      "sha256": "ddbf83f046edb3fd5d0680a355782e98f584cd2d3e07a6bdb3e571e1c21ed855",
+      "bytes": 1699
+    },
+    {
+      "path": "research/cycles/tmf-002/validation.json",
+      "sha256": "e47f54cf19a37c0f62052d7270178e02de9a8cbe8bf2401355d279fae8c4fb33",
+      "bytes": 1834
+    },
+    {
+      "path": "research/cycles/tmf-002/verify.py",
+      "sha256": "e99fd423264fce88680557b40a8415817dceaa5844cf5615136449be82fe54e0",
+      "bytes": 6245
+    },
+    {
+      "path": "schemas/knowledge-unit.schema.json",
+      "sha256": "e48dff61ef5734525ada5f4c2cf2d3ead699feedbd9c7f9e8d7b92840050f6b6",
+      "bytes": 1892
+    },
+    {
+      "path": "schemas/strategy-spec.schema.json",
+      "sha256": "44a0e8e24615eeb7815049638da9273532004b22050713c683dbbbab54f24b28",
+      "bytes": 2222
+    }
+  ]
+}

@@ -1,0 +1,102 @@
+{
+  "cost_model_id": "tmf-002-synthetic-v1",
+  "instrument": "TAIFEX:TMF",
+  "status": "synthetic_cost_arithmetic_only",
+  "market_data_used": false,
+  "historical_backtest_executed": false,
+  "point_value_twd": 10,
+  "tick_points": 1,
+  "example_price_points": 49000,
+  "example_price_kind": "chosen_round_number_not_observed_market_input",
+  "tax_rate": 2e-05,
+  "tax_basis": "TAIFEX stock-index category rule; TMF-specific row and rounding unverified",
+  "commission_and_slippage_kind": "uncalibrated_research_assumptions",
+  "spread_added_separately": false,
+  "scenarios": [
+    {
+      "id": "low",
+      "commission_per_side_twd": 10,
+      "slippage_per_side_points": 1,
+      "round_trip_tax_twd_estimate": 19.6,
+      "round_trip_cost_twd_estimate": 59.6,
+      "gross_break_even_points": 5.96,
+      "binary_outcome_examples": [
+        {
+          "stop_points": 100,
+          "target_points": 200,
+          "gross_loss_twd": 1000,
+          "gross_gain_twd": 2000,
+          "net_loss_twd_estimate": 1059.6,
+          "net_gain_twd_estimate": 1940.4,
+          "break_even_win_rate": 0.3532
+        },
+        {
+          "stop_points": 20,
+          "target_points": 40,
+          "gross_loss_twd": 200,
+          "gross_gain_twd": 400,
+          "net_loss_twd_estimate": 259.6,
+          "net_gain_twd_estimate": 340.4,
+          "break_even_win_rate": 0.43266667
+        }
+      ]
+    },
+    {
+      "id": "middle",
+      "commission_per_side_twd": 20,
+      "slippage_per_side_points": 3,
+      "round_trip_tax_twd_estimate": 19.6,
+      "round_trip_cost_twd_estimate": 119.6,
+      "gross_break_even_points": 11.96,
+      "binary_outcome_examples": [
+        {
+          "stop_points": 100,
+          "target_points": 200,
+          "gross_loss_twd": 1000,
+          "gross_gain_twd": 2000,
+          "net_loss_twd_estimate": 1119.6,
+          "net_gain_twd_estimate": 1880.4,
+          "break_even_win_rate": 0.3732
+        },
+        {
+          "stop_points": 20,
+          "target_points": 40,
+          "gross_loss_twd": 200,
+          "gross_gain_twd": 400,
+          "net_loss_twd_estimate": 319.6,
+          "net_gain_twd_estimate": 280.4,
+          "break_even_win_rate": 0.53266667
+        }
+      ]
+    },
+    {
+      "id": "high",
+      "commission_per_side_twd": 30,
+      "slippage_per_side_points": 5,
+      "round_trip_tax_twd_estimate": 19.6,
+      "round_trip_cost_twd_estimate": 179.6,
+      "gross_break_even_points": 17.96,
+      "binary_outcome_examples": [
+        {
+          "stop_points": 100,
+          "target_points": 200,
+          "gross_loss_twd": 1000,
+          "gross_gain_twd": 2000,
+          "net_loss_twd_estimate": 1179.6,
+          "net_gain_twd_estimate": 1820.4,
+          "break_even_win_rate": 0.3932
+        },
+        {
+          "stop_points": 20,
+          "target_points": 40,
+          "gross_loss_twd": 200,
+          "gross_gain_twd": 400,
+          "net_loss_twd_estimate": 379.6,
+          "net_gain_twd_estimate": 220.4,
+          "break_even_win_rate": 0.63266667
+        }
+      ]
+    }
+  ],
+  "calculated_at": "2026-10-02T15:03:11.717399+00:00"
+}

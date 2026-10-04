@@ -1,0 +1,30 @@
+{
+  "command": "npm run verify",
+  "cwd": "/workspace/AutoStrat-Bot",
+  "exit_code": 0,
+  "recorded_at": "2026-10-02T10:33:27.152795+00:00",
+  "outcomes": {
+    "check": "passed",
+    "integration_tests": {
+      "executed": 8,
+      "passed": 8,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0
+    },
+    "worker_build": {
+      "status": "passed",
+      "path": "dist/server/index.js",
+      "bytes": 89975,
+      "sha256": "97609764b65727f3cf0f486ebe231167804d051c7647240496a54bd4fd35a05b"
+    }
+  },
+  "unrun": [
+    "瀏覽器 QA",
+    "Pine 編譯",
+    "市場行情資料驗證",
+    "策略回測",
+    "背景 Agent 運行"
+  ],
+  "note": "記錄本輪已完成命令的觀察結果；沒有將未執行功能計為通過。"
+}

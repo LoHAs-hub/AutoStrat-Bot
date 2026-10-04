@@ -1,0 +1,276 @@
+{
+  "cycle_id": "tmf-001",
+  "sources": [
+    {
+      "id": "S01",
+      "title": "微型臺指期貨契約規格",
+      "publisher": "臺灣期貨交易所",
+      "url": "https://www.taifex.com.tw/cht/2/tMF",
+      "retrieved_at": "2026-10-02T10:19:40.099450+00:00",
+      "http_status": 200,
+      "http_headers": {
+        "Content-Type": "text/html;charset=UTF-8",
+        "Date": "Fri, 02 Oct 2026 10:19:39 GMT"
+      },
+      "published_at": null,
+      "reported_page_update_date": null,
+      "effective_at": null,
+      "transport_sha256": "f926fbeb95af52e8f69fec0c7f966b7f44bb5598173e456a1a18dae9c4a0aafc",
+      "decoded_sha256": "f926fbeb95af52e8f69fec0c7f966b7f44bb5598173e456a1a18dae9c4a0aafc",
+      "normalized_text_sha256": "2bca46156ed82e77e258f4dd1ad0a61510b4f6efc957e7fc7b1dc9792465390d",
+      "cache_key": "contract",
+      "rights_note": "本輪查閱公開頁面；儲存短摘錄、metadata 與自寫研究。未取得行情大量下載、轉售或第三方資料再利用授權。",
+      "limitation": "僅能證明擷取時所見版本；首次公開時間未查明，不能直接當作過去時點已知資料。"
+    },
+    {
+      "id": "S02",
+      "title": "盤後交易介紹",
+      "publisher": "臺灣期貨交易所",
+      "url": "https://www.taifex.com.tw/cht/4/aHIntroduction",
+      "retrieved_at": "2026-10-02T10:18:59.077279+00:00",
+      "http_status": 200,
+      "http_headers": {
+        "Content-Type": "text/html;charset=UTF-8",
+        "Date": "Fri, 02 Oct 2026 10:18:59 GMT"
+      },
+      "published_at": null,
+      "reported_page_update_date": null,
+      "effective_at": null,
+      "transport_sha256": "bc91fdbcc6dc4d5b4251bf9929a9bcb573e5bed281c60af269d1effd6697e5dd",
+      "decoded_sha256": "bc91fdbcc6dc4d5b4251bf9929a9bcb573e5bed281c60af269d1effd6697e5dd",
+      "normalized_text_sha256": "903f8efef222f18c78c96ea1430a8f4f7f4e5b5576e3cfa615c218d72804cd70",
+      "cache_key": "afterhours",
+      "rights_note": "本輪查閱公開頁面；儲存短摘錄、metadata 與自寫研究。未取得行情大量下載、轉售或第三方資料再利用授權。",
+      "limitation": "僅能證明擷取時所見版本；首次公開時間未查明，不能直接當作過去時點已知資料。"
+    },
+    {
+      "id": "S03",
+      "title": "股價指數類保證金一覽表",
+      "publisher": "臺灣期貨交易所",
+      "url": "https://www.taifex.com.tw/cht/5/indexMarging",
+      "retrieved_at": "2026-10-02T10:16:04.916617+00:00",
+      "http_status": 200,
+      "http_headers": {
+        "Content-Type": "text/html;charset=UTF-8",
+        "Date": "Fri, 02 Oct 2026 10:16:04 GMT"
+      },
+      "published_at": null,
+      "reported_page_update_date": "2026-08-12",
+      "effective_at": null,
+      "transport_sha256": "6a142f7175353f8bd82d3d865c953589783947a44d816cc4c74f116b0b7dfdfa",
+      "decoded_sha256": "6a142f7175353f8bd82d3d865c953589783947a44d816cc4c74f116b0b7dfdfa",
+      "normalized_text_sha256": "848d108784b2f693bd377a910a02d872683f08f119982ae962f254c57b7d2b74",
+      "cache_key": "margin",
+      "rights_note": "本輪查閱公開頁面；儲存短摘錄、metadata 與自寫研究。未取得行情大量下載、轉售或第三方資料再利用授權。",
+      "limitation": "頁面更新日期不等同公告生效日期，也不代表券商實收金額。"
+    },
+    {
+      "id": "S04",
+      "title": "MICRO TAIEX FUTURES — TAIFEX:TMF1!",
+      "publisher": "TradingView",
+      "url": "https://www.tradingview.com/symbols/TAIFEX-TMF1!/",
+      "retrieved_at": "2026-10-02T10:19:39.589152+00:00",
+      "http_status": 200,
+      "http_headers": {
+        "Content-Type": "text/html; charset=utf-8",
+        "Date": "Fri, 02 Oct 2026 10:19:39 GMT"
+      },
+      "published_at": null,
+      "reported_page_update_date": null,
+      "effective_at": null,
+      "transport_sha256": "3eee1e671e80c7489b529498796091e4a986c87e7f5bb82c7b97efbd1e120b3a",
+      "decoded_sha256": "3eee1e671e80c7489b529498796091e4a986c87e7f5bb82c7b97efbd1e120b3a",
+      "normalized_text_sha256": "6f29e1a35792b45352480f9e936fb67cb3d4963d750416daadc16d3ddbc813f0",
+      "cache_key": "symbol",
+      "rights_note": "本輪查閱公開頁面；儲存短摘錄、metadata 與自寫研究。未取得行情大量下載、轉售或第三方資料再利用授權。",
+      "limitation": "公開商品頁只確認名稱與連續合約類型，未驗證帳號資料權限、歷史完整性或換月/復權規則。"
+    },
+    {
+      "id": "S05",
+      "title": "Pine Script v6 — Strategies",
+      "publisher": "TradingView",
+      "url": "https://www.tradingview.com/pine-script-docs/concepts/strategies/",
+      "retrieved_at": "2026-10-02T10:16:04.811635+00:00",
+      "http_status": 200,
+      "http_headers": {
+        "Content-Type": "text/html; charset=utf-8",
+        "Content-Encoding": "gzip",
+        "Last-Modified": "Wed, 30 Sep 2026 14:45:23 GMT",
+        "Date": "Fri, 02 Oct 2026 10:16:05 GMT"
+      },
+      "published_at": null,
+      "reported_page_update_date": null,
+      "effective_at": null,
+      "transport_sha256": "e792713b519c8b5c04b51c6f82999d13c84f8f201e1471d647dcb3ee82bc01eb",
+      "decoded_sha256": "1f6fe851cbbeff9e2b43d0af85159e9f9a9ad311e6d0ec1606475b2ef358c80a",
+      "normalized_text_sha256": "90bb7384b78f870d669063de470514a9ee3ac240c269b079ada73091c669557e",
+      "cache_key": "pine",
+      "rights_note": "本輪查閱公開頁面；儲存短摘錄、metadata 與自寫研究。未取得行情大量下載、轉售或第三方資料再利用授權。",
+      "limitation": "方法文件不是 TMF 策略實證；本輪未執行 Pine 編譯或市場回測。"
+    }
+  ],
+  "evidence": [
+    {
+      "id": "E01",
+      "source_id": "S01",
+      "locator": "契約規格表：交易標的／中文簡稱／英文代碼",
+      "quote": "交易標的 臺灣證券交易所發行量加權股價指數 中文簡稱 微型臺指期貨 英文代碼 TMF",
+      "normalized_start": 3277,
+      "normalized_end": 3319,
+      "sha256": "49f3c80f31ff879aa966c73fb821e9b72b1971f04c2897f1c8306d6891ddbde6"
+    },
+    {
+      "id": "E02",
+      "source_id": "S01",
+      "locator": "契約規格表：契約價值",
+      "quote": "微型臺指期貨指數乘上新臺幣10元",
+      "normalized_start": 3458,
+      "normalized_end": 3474,
+      "sha256": "130f1437aad36f88c689d1a90e7b06c7ec4b87e80d6ca573c8eccbdc4b7246ee"
+    },
+    {
+      "id": "E03",
+      "source_id": "S01",
+      "locator": "契約規格表：最小升降單位",
+      "quote": "指數1點（相當於新臺幣10元）",
+      "normalized_start": 3657,
+      "normalized_end": 3672,
+      "sha256": "3522df6edb19fcb3f3afa2cbfaea3676ee49d153a2cb59248369e34781a6be32"
+    },
+    {
+      "id": "E04",
+      "source_id": "S01",
+      "locator": "契約規格表：交易時間",
+      "quote": "一般交易時段之交易時間為營業日上午8:45~下午1:45；到期月份契約最後交易日之交易時間為上午8:45~下午1:30 盤後交易時段之交易時間為營業日下午3:00~次日上午5:00；到期月份契約最後交易日無盤後交易時段",
+      "normalized_start": 3343,
+      "normalized_end": 3452,
+      "sha256": "a575a7d233190f2f800ff3aff062e6c378cfb3bfc3598df1b45424424d32e335"
+    },
+    {
+      "id": "E05",
+      "source_id": "S01",
+      "locator": "契約規格表：最後交易日",
+      "quote": "各契約的最後交易日為各該契約交割月份第3個星期三",
+      "normalized_start": 3679,
+      "normalized_end": 3703,
+      "sha256": "35e6c9a6e9350acc593c0f0e0c8de3af23fd82334f47cfc1e66e57988fde4557"
+    },
+    {
+      "id": "E06",
+      "source_id": "S01",
+      "locator": "契約規格表下方假日例外",
+      "quote": "最後交易日若為假日或因不可抗力因素未能進行交易時，以其最近之次一營業日為最後交易日。",
+      "normalized_start": 4059,
+      "normalized_end": 4101,
+      "sha256": "a24516582a166ed41afa453cab6a39b94d768e8d48ab82d41b3e2ecd0c6ae7ce"
+    },
+    {
+      "id": "E07",
+      "source_id": "S01",
+      "locator": "契約規格表：交割方式",
+      "quote": "以現金交割，交易人於最後結算日依最後結算價之差額，以淨額進行現金之交付或收受",
+      "normalized_start": 3794,
+      "normalized_end": 3832,
+      "sha256": "77b8544f8ff8577bd8058239f4e410d043152f51e4f40a7be85093165ace0fc7"
+    },
+    {
+      "id": "E08",
+      "source_id": "S02",
+      "locator": "交易及部位歸屬原則",
+      "quote": "每日交易及結算作業以一般交易時段收盤為劃分點，盤後交易時段之交易屬於次一一般交易時段；",
+      "normalized_start": 4669,
+      "normalized_end": 4712,
+      "sha256": "abddf04528774787147058c7ff377e7bebe6260ed3495ecd2ab0efa6ca08bb58"
+    },
+    {
+      "id": "E09",
+      "source_id": "S02",
+      "locator": "委託申報種類",
+      "quote": "委託之有效時間將配合調整，僅在該委託申報的交易時段有效，意即「當日有效」改為「當盤有效」。",
+      "normalized_start": 4954,
+      "normalized_end": 4999,
+      "sha256": "298ea658668f39163c5ea48b8fa8b0b1ac9d216030ecba09870cb1db2785e36c"
+    },
+    {
+      "id": "E10",
+      "source_id": "S03",
+      "locator": "股價指數類：欄位順序",
+      "quote": "商品別 結算保證金 維持保證金 原始保證金",
+      "normalized_start": 4545,
+      "normalized_end": 4566,
+      "sha256": "468bf4b29ab970491887aa51be44724b5028f3f00a12e8bbf517e88206c90c12"
+    },
+    {
+      "id": "E11",
+      "source_id": "S03",
+      "locator": "股價指數類：微型臺指期貨列",
+      "quote": "微型臺指期貨 25,950 26,900 35,050",
+      "normalized_start": 4659,
+      "normalized_end": 4686,
+      "sha256": "0c14c14e2013f377c60260ca1b36123e616b97d8be26edb3e0b0d8eb6f678181"
+    },
+    {
+      "id": "E12",
+      "source_id": "S03",
+      "locator": "表格下方更新日期",
+      "quote": "更新日期：2026/08/12",
+      "normalized_start": 5885,
+      "normalized_end": 5900,
+      "sha256": "815591f2d53eeaae1037aa3f31a51dadbb817bdfcb44a66b8e9cb844709fa582"
+    },
+    {
+      "id": "E13",
+      "source_id": "S01",
+      "locator": "契約規格表：保證金",
+      "quote": "期貨商向交易人收取之交易保證金及保證金追繳標準，不得低於本公司公告之原始保證金及維持保證金水準",
+      "normalized_start": 3950,
+      "normalized_end": 3997,
+      "sha256": "2c6d3c03451d588ed624d419d756644dc12a41edf2119b10a7a174f44a9ca39c"
+    },
+    {
+      "id": "E14",
+      "source_id": "S04",
+      "locator": "頁面標題",
+      "quote": "MICRO TAIEX FUTURES Price Chart — TAIFEX:TMF1! — TradingView",
+      "normalized_start": 0,
+      "normalized_end": 60,
+      "sha256": "1a919f4937f6d79d36812f39734cff68d826a02d8974bb2472f80544b2720562"
+    },
+    {
+      "id": "E15",
+      "source_id": "S04",
+      "locator": "商品頁標頭",
+      "quote": "MICRO TAIEX FUTURES Continuous contract Continuous contract TMF1! Taiwan Futures Exchange",
+      "normalized_start": 171,
+      "normalized_end": 260,
+      "sha256": "61c714f920fb2846cb5f94b5336f446be238cf293a91fd96755391768c09d0b1"
+    },
+    {
+      "id": "E16",
+      "source_id": "S05",
+      "locator": "#orders-and-trades",
+      "quote": "By default, the earliest point at which the broker emulator fills an order is on the next available tick",
+      "normalized_start": 33782,
+      "normalized_end": 33886,
+      "sha256": "f3e4a1764b597eaa4797925e8c97fedacd43387173a8d4005e7362766eb9286d"
+    },
+    {
+      "id": "E17",
+      "source_id": "S05",
+      "locator": "#orders-and-trades",
+      "quote": "If a strategy uses the default calculation behavior , it updates its calculations only after a bar closes, meaning the next tick on which an order can fill is at the open of the following bar .",
+      "normalized_start": 33960,
+      "normalized_end": 34153,
+      "sha256": "456e69f46e6ce88fe0c11a1b4cb3ceb56ea1efdc8393e31853d5b280dbf27e92"
+    },
+    {
+      "id": "E18",
+      "source_id": "S05",
+      "locator": "#lookahead-bias",
+      "quote": "Do not include barmerge.lookahead_on in request.*() calls without offsetting the data series with the history-referencing operator , especially when requesting data from a higher timeframe.",
+      "normalized_start": 186715,
+      "normalized_end": 186904,
+      "sha256": "4f8f613f9e0761189efaef9fc351e2058a31539f3932651d81f7d7e9d32fbad1"
+    }
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "cycle_id": "tmf-002",
+  "version": 1,
+  "date_timezone": "Asia/Taipei",
+  "repository_base": "95a1fd8a698990bd24e95c9c283c53303f25d58b",
+  "status": "observation_and_reviewable_drafts_complete; empirical_strategy_evaluation_blocked",
+  "primary_instrument": "TAIFEX:TMF",
+  "chart_entry": "TAIFEX:TMF1!",
+  "sources_used": [
+    "M01",
+    "M02",
+    "M03",
+    "P01",
+    "D01",
+    "R01",
+    "R02",
+    "F01"
+  ],
+  "strategy_specs": [
+    "strategy-A.json",
+    "strategy-B.json"
+  ],
+  "executed": [
+    "public_source_review",
+    "human_readable_TMF_daily_and_60m_chart_observation",
+    "native_ATR_add_attempt_blocked_by_free_account_prompt",
+    "synthetic_TMF_cost_arithmetic",
+    "draft_rule_and_risk_documentation"
+  ],
+  "unrun": [
+    "TMF_ATR_or_other_historical_indicator_calculation",
+    "historical_signal_generation",
+    "Pine_implementation_or_compilation",
+    "Strategy_Tester_backtest",
+    "trade_ledger_reconciliation",
+    "out_of_sample_evaluation",
+    "empirical_slippage_calibration",
+    "personal_capital_or_risk_budget_evaluation"
+  ],
+  "data_usage": {
+    "visible_daily_window": "approximately March–October 2026",
+    "visible_hourly_window": "approximately September 17–October 2, 2026",
+    "observed_windows_used_for_hypothesis_selection": true,
+    "parameters_optimized": false,
+    "parameter_search_trials": 0,
+    "holdout_evaluated": false,
+    "txf_numeric_data_used": false,
+    "quarantined_diagnostic_daily_bars_used": false,
+    "cost_examples_use_market_data": false
+  },
+  "blockers": [
+    {
+      "id": "B01",
+      "operation": "Add built-in Average true range",
+      "observed_result": "free account prompt; no indicator added",
+      "impact": "no actual ATR values or native strategy results",
+      "minimum_resolution": "use existing authorized logged-in TradingView native research environment",
+      "no_paid_service_required_by_this_proposal": true
+    },
+    {
+      "id": "B02",
+      "operation": "Check license before historical machine analysis",
+      "observed_result": "TradingView Terms Section 3 explicitly restrict non-display usage and machine processing",
+      "impact": "batch extraction stopped; 300 diagnostic daily bars quarantined, unused; no external backtest",
+      "minimum_resolution": "native displayed Pine/Strategy Tester research, or separately confirmed rights for external batch use"
+    }
+  ],
+  "diagnostics": {
+    "tls_verification_enabled": true,
+    "browser_trust_resolution": "environment public CA trust imported in browser execution context per Chromium Linux certificate documentation; not claimed persistent across environments",
+    "native_indicator_account_created": false,
+    "credentials_read": false,
+    "diagnostic_ohlcv_capture_retired": true,
+    "diagnostic_extractor_committed": false
+  },
+  "scope": {
+    "application_code_changed": false,
+    "database_changed": false,
+    "broker_connection": false,
+    "live_orders": false,
+    "cross_product_arbitrage": false,
+    "paid_services": false,
+    "contest_registration": false,
+    "publication": false,
+    "git_commit_or_push": false
+  },
+  "next_step": "Review bundled rules/risk; native A versus direct breakout baseline on authorized logged-in TradingView, with settings/fills/cost checks before performance claims",
+  "review_pack": "../../../artifacts/tmf-002-review.zip"
+}

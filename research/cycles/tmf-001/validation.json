@@ -1,0 +1,307 @@
+{
+  "cycle_id": "tmf-001",
+  "checked_at": "2026-10-02T10:33:27.104426+00:00",
+  "runner": {
+    "python": "3.12.14",
+    "sqlite": "3.53.1"
+  },
+  "status": "passed",
+  "checks": [
+    {
+      "name": "knowledge_schema",
+      "status": "passed",
+      "detail": "All ten records conform to the existing JSON Schema."
+    },
+    {
+      "name": "unique_units",
+      "status": "passed",
+      "detail": "Ten unique IDs and claim hashes; no exact duplicates."
+    },
+    {
+      "name": "claim_hashes",
+      "status": "passed",
+      "detail": "SHA-256 of every UTF-8 claim."
+    },
+    {
+      "name": "source_records",
+      "status": "passed",
+      "detail": "Five retrieved HTTPS documentation pages; soft 404 discovery pages excluded."
+    },
+    {
+      "name": "evidence_hashes",
+      "status": "passed",
+      "detail": "All 18 retained excerpts have matching hashes."
+    },
+    {
+      "name": "unit_evidence_links",
+      "status": "passed",
+      "detail": "Every unit resolves to its actual source and excerpt IDs."
+    },
+    {
+      "name": "captured_source_quotes",
+      "status": "passed",
+      "detail": "Five captured snapshots and all 18 quote spans match the actual downloads."
+    },
+    {
+      "name": "question_answer_integrity",
+      "status": "passed",
+      "detail": "Ten reviewed answers reference existing units, or explicitly record source insufficiency."
+    },
+    {
+      "name": "positive_retrieval_at_3",
+      "status": "passed",
+      "detail": "8/8 development questions retrieve every required unit within the top three."
+    },
+    {
+      "name": "historical_snapshot_filter",
+      "status": "passed",
+      "detail": "The captured 2026-10-02 versions cannot be retrieved as known on 2026-09-30."
+    }
+  ],
+  "retrieval": {
+    "algorithm": "SQLite FTS5 BM25 over Chinese bigrams and Latin tokens in claims only; status/instrument/time filters; top three",
+    "answerable_questions": 8,
+    "all_supports_retrieved_at_3": 8,
+    "recorded_manual_abstentions": 2,
+    "questions": [
+      {
+        "question_id": "Q01",
+        "question": "TMF 一口每點價值與最小跳動是多少？",
+        "outcome": "retrieval_passed",
+        "top_three": [
+          {
+            "unit_id": "K02",
+            "score": -8.263757948254243,
+            "claim": "TMF 的最小跳動（最小升降單位）為指數 1 點，相當於一口新臺幣 10 元。"
+          },
+          {
+            "unit_id": "K01",
+            "score": -6.071332370145974,
+            "claim": "期交所微型臺指期貨代碼為 TMF，標的是臺灣證券交易所發行量加權股價指數；一口契約價值為指數乘以新臺幣 10 元，即每點價值 10 元。"
+          },
+          {
+            "unit_id": "K03",
+            "score": -9.565217391304349e-07,
+            "claim": "TMF 日盤交易時間為 08:45–13:45，夜盤為 15:00–次日 05:00；到期月份契約最後交易日的日盤至 13:30，且該到期契約當日沒有夜盤。時間採 Asia/Taipei。"
+          }
+        ],
+        "expected_supporting_units": [
+          "K01",
+          "K02"
+        ],
+        "reviewed_answer": "一口每點新臺幣 10 元；最小跳動為 1 點，即一口 10 元。這不包含手續費、交易稅或滑價。"
+      },
+      {
+        "question_id": "Q02",
+        "question": "TMF 日盤和夜盤交易時間如何區分？到期合約有什麼例外？",
+        "outcome": "retrieval_passed",
+        "top_three": [
+          {
+            "unit_id": "K03",
+            "score": -7.771855565826867,
+            "claim": "TMF 日盤交易時間為 08:45–13:45，夜盤為 15:00–次日 05:00；到期月份契約最後交易日的日盤至 13:30，且該到期契約當日沒有夜盤。時間採 Asia/Taipei。"
+          },
+          {
+            "unit_id": "K05",
+            "score": -3.530661106820241,
+            "claim": "盤後交易（夜盤）以一般交易時段收盤為交易及結算作業的劃分點，夜盤交易歸屬次一一般交易時段。"
+          },
+          {
+            "unit_id": "K08",
+            "score": -2.195037145457475,
+            "claim": "TradingView 公開商品頁存在 TAIFEX:TMF1!，名稱為 MICRO TAIEX FUTURES，類型標示 Continuous contract（連續合約）。"
+          }
+        ],
+        "expected_supporting_units": [
+          "K03"
+        ],
+        "reviewed_answer": "日盤 08:45–13:45，夜盤 15:00–次日 05:00（台北）；到期月份契約最後交易日到 13:30，該到期契約沒有夜盤。"
+      },
+      {
+        "question_id": "Q03",
+        "question": "盤後交易的交易日歸屬，能否直接使用成交的曆日？",
+        "outcome": "retrieval_passed",
+        "top_three": [
+          {
+            "unit_id": "K05",
+            "score": -3.273261774937599,
+            "claim": "盤後交易（夜盤）以一般交易時段收盤為交易及結算作業的劃分點，夜盤交易歸屬次一一般交易時段。"
+          },
+          {
+            "unit_id": "K06",
+            "score": -3.232851135740839,
+            "claim": "期交所盤後交易制度下，ROD 委託僅在該委託申報的交易時段有效；「當日有效」調整為「當盤有效」。"
+          },
+          {
+            "unit_id": "K09",
+            "score": -2.5786637454379777,
+            "claim": "Pine 策略 broker emulator 預設最早在下一個可用 tick 成交；預設每根 K 線收盤後計算時，收盤產生的市價單通常在下一根 K 線開盤成交。"
+          }
+        ],
+        "expected_supporting_units": [
+          "K05"
+        ],
+        "reviewed_answer": "不能直接用成交曆日；夜盤歸屬次一一般交易時段，須搭配交易日曆處理週末與休市。"
+      },
+      {
+        "question_id": "Q04",
+        "question": "TMF 最後交易日與現金交割規則是什麼？",
+        "outcome": "retrieval_passed",
+        "top_three": [
+          {
+            "unit_id": "K04",
+            "score": -7.819602967107231,
+            "claim": "TMF 最後交易日通常為交割月份第 3 個星期三；若遇假日或不可抗力未能交易，改為最近的次一營業日；到期採現金交割。"
+          },
+          {
+            "unit_id": "K03",
+            "score": -2.692874267570873,
+            "claim": "TMF 日盤交易時間為 08:45–13:45，夜盤為 15:00–次日 05:00；到期月份契約最後交易日的日盤至 13:30，且該到期契約當日沒有夜盤。時間採 Asia/Taipei。"
+          },
+          {
+            "unit_id": "K05",
+            "score": -0.40449835813784907,
+            "claim": "盤後交易（夜盤）以一般交易時段收盤為交易及結算作業的劃分點，夜盤交易歸屬次一一般交易時段。"
+          }
+        ],
+        "expected_supporting_units": [
+          "K04"
+        ],
+        "reviewed_answer": "通常是交割月份第 3 個星期三，假日或不可抗力不能交易時順延到最近次一營業日；到期為現金交割。"
+      },
+      {
+        "question_id": "Q05",
+        "question": "TMF 原始保證金可以永遠固定成一個數字嗎？",
+        "outcome": "retrieval_passed",
+        "top_three": [
+          {
+            "unit_id": "K07",
+            "score": -5.960835624361582,
+            "claim": "本輪擷取的期交所保證金頁列 TMF 結算／維持／原始保證金為 25,950／26,900／35,050 元，頁面更新日期為 2026-08-12；契約規格要求期貨商收取標準不得低於公告的原始及維持水準。"
+          },
+          {
+            "unit_id": "K09",
+            "score": -1.8250870647623945,
+            "claim": "Pine 策略 broker emulator 預設最早在下一個可用 tick 成交；預設每根 K 線收盤後計算時，收盤產生的市價單通常在下一根 K 線開盤成交。"
+          },
+          {
+            "unit_id": "K02",
+            "score": -1.2222222222222223e-06,
+            "claim": "TMF 的最小跳動（最小升降單位）為指數 1 點，相當於一口新臺幣 10 元。"
+          }
+        ],
+        "expected_supporting_units": [
+          "K07"
+        ],
+        "reviewed_answer": "不能。本輪僅有頁面快照，原始保證金列 35,050 元；更新日不是生效日證據，實際使用前須重查公告與券商規則。"
+      },
+      {
+        "question_id": "Q06",
+        "question": "TradingView 上的 TMF1! 是什麼商品與合約類型？",
+        "outcome": "retrieval_passed",
+        "top_three": [
+          {
+            "unit_id": "K08",
+            "score": -10.975185727287375,
+            "claim": "TradingView 公開商品頁存在 TAIFEX:TMF1!，名稱為 MICRO TAIEX FUTURES，類型標示 Continuous contract（連續合約）。"
+          }
+        ],
+        "expected_supporting_units": [
+          "K08"
+        ],
+        "reviewed_answer": "商品頁為 TAIFEX:TMF1!，名稱 MICRO TAIEX FUTURES，標示連續合約；尚未驗證行情權限與換月/復權設定。"
+      },
+      {
+        "question_id": "Q07",
+        "question": "Pine 策略在收盤產生市價單，預設什麼時候成交？",
+        "outcome": "retrieval_passed",
+        "top_three": [
+          {
+            "unit_id": "K09",
+            "score": -15.810721663972709,
+            "claim": "Pine 策略 broker emulator 預設最早在下一個可用 tick 成交；預設每根 K 線收盤後計算時，收盤產生的市價單通常在下一根 K 線開盤成交。"
+          },
+          {
+            "unit_id": "K05",
+            "score": -1.3461529747843273,
+            "claim": "盤後交易（夜盤）以一般交易時段收盤為交易及結算作業的劃分點，夜盤交易歸屬次一一般交易時段。"
+          }
+        ],
+        "expected_supporting_units": [
+          "K09"
+        ],
+        "reviewed_answer": "在預設收盤計算下，市價單最早下一個可用 tick，通常為下一根 K 線開盤成交；改變計算/成交設定時須另核對。"
+      },
+      {
+        "question_id": "Q08",
+        "question": "使用 lookahead_on 取得高週期資料時，怎樣避免未來資料洩漏？",
+        "outcome": "retrieval_passed",
+        "top_three": [
+          {
+            "unit_id": "K10",
+            "score": -21.41970313369491,
+            "claim": "使用 request.*() 取得高週期資料時，不應在未對資料序列作歷史位移的情況下使用 barmerge.lookahead_on，以免把未來資訊洩漏到歷史。"
+          }
+        ],
+        "expected_supporting_units": [
+          "K10"
+        ],
+        "reviewed_answer": "官方要求不要對未作歷史位移的序列使用 lookahead_on，尤其高週期請求；仍須檢查其他未來資料洩漏途徑。"
+      },
+      {
+        "question_id": "Q09",
+        "question": "我的券商交易 TMF 每口實際手續費是多少？",
+        "outcome": "manual_abstention_recorded",
+        "top_three": [
+          {
+            "unit_id": "K03",
+            "score": -1.9130434782608697e-06,
+            "claim": "TMF 日盤交易時間為 08:45–13:45，夜盤為 15:00–次日 05:00；到期月份契約最後交易日的日盤至 13:30，且該到期契約當日沒有夜盤。時間採 Asia/Taipei。"
+          },
+          {
+            "unit_id": "K04",
+            "score": -1.8723404255319154e-06,
+            "claim": "TMF 最後交易日通常為交割月份第 3 個星期三；若遇假日或不可抗力未能交易，改為最近的次一營業日；到期採現金交割。"
+          },
+          {
+            "unit_id": "K01",
+            "score": -1.7959183673469386e-06,
+            "claim": "期交所微型臺指期貨代碼為 TMF，標的是臺灣證券交易所發行量加權股價指數；一口契約價值為指數乘以新臺幣 10 元，即每點價值 10 元。"
+          }
+        ],
+        "expected_supporting_units": [],
+        "reviewed_answer": "來源不足：本輪沒有你的券商、帳戶費率或成交費用文件，不能填入實際每口手續費。需要券商費率或成交明細。"
+      },
+      {
+        "question_id": "Q10",
+        "question": "哪個 TMF 策略已證明可以穩定獲利，應該直接採用？",
+        "outcome": "manual_abstention_recorded",
+        "top_three": [
+          {
+            "unit_id": "K09",
+            "score": -1.8250870647623945,
+            "claim": "Pine 策略 broker emulator 預設最早在下一個可用 tick 成交；預設每根 K 線收盤後計算時，收盤產生的市價單通常在下一根 K 線開盤成交。"
+          },
+          {
+            "unit_id": "K02",
+            "score": -1.2222222222222223e-06,
+            "claim": "TMF 的最小跳動（最小升降單位）為指數 1 點，相當於一口新臺幣 10 元。"
+          },
+          {
+            "unit_id": "K03",
+            "score": -9.565217391304349e-07,
+            "claim": "TMF 日盤交易時間為 08:45–13:45，夜盤為 15:00–次日 05:00；到期月份契約最後交易日的日盤至 13:30，且該到期契約當日沒有夜盤。時間採 Asia/Taipei。"
+          }
+        ],
+        "expected_supporting_units": [],
+        "reviewed_answer": "來源不足：本輪沒有行情快照、候選策略回測、樣本外驗證或模擬紀錄，不能推薦已證明穩定獲利的 TMF 策略。"
+      }
+    ]
+  },
+  "limitations": [
+    "Questions and answers are a curated development set, not a blind holdout.",
+    "Quote presence and schema checks do not prove semantic entailment or a trading edge.",
+    "Abstentions and claim interpretations were checked by this Agent, not an independent reviewer.",
+    "No LLM answer generation, Pine compilation, live-market data or strategy backtest was tested."
+  ]
+}

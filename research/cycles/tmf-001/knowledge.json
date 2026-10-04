@@ -1,0 +1,476 @@
+{
+  "cycle_id": "tmf-001",
+  "unit_schema": "../../../schemas/knowledge-unit.schema.json",
+  "hash_definition": "content_hash = SHA-256 of UTF-8 claim text",
+  "availability_policy": "available_at 留 null；目前研究可用擷取版本，歷史查詢僅可在擷取時間之後使用該版本。",
+  "units": [
+    {
+      "id": "K01",
+      "version": 1,
+      "kind": "fact",
+      "claim": "期交所微型臺指期貨代碼為 TMF，標的是臺灣證券交易所發行量加權股價指數；一口契約價值為指數乘以新臺幣 10 元，即每點價值 10 元。",
+      "source_ids": [
+        "S01"
+      ],
+      "source_locator": "S01: 契約規格表：交易標的／中文簡稱／英文代碼; S01: 契約規格表：契約價值",
+      "instrument": "TAIFEX:TMF",
+      "published_at": null,
+      "available_at": null,
+      "retrieved_at": "2026-10-02T10:19:40.099450+00:00",
+      "review_due_at": null,
+      "status": "reviewed",
+      "assumptions": [
+        "以本輪取得的官方文件版本為準；不是歷史時點的已知版本。"
+      ],
+      "exceptions": [
+        "不可把其他商品的乘數或口數直接套用到 TMF。"
+      ],
+      "contradicts": [],
+      "supersedes": null,
+      "content_hash": "630ed8eafa23b7e3df2cd56f18beb2c35c21c041b4906e249b109f604d026ee6"
+    },
+    {
+      "id": "K02",
+      "version": 1,
+      "kind": "fact",
+      "claim": "TMF 的最小跳動（最小升降單位）為指數 1 點，相當於一口新臺幣 10 元。",
+      "source_ids": [
+        "S01"
+      ],
+      "source_locator": "S01: 契約規格表：最小升降單位",
+      "instrument": "TAIFEX:TMF",
+      "published_at": null,
+      "available_at": null,
+      "retrieved_at": "2026-10-02T10:19:40.099450+00:00",
+      "review_due_at": null,
+      "status": "reviewed",
+      "assumptions": [
+        "以本輪取得的官方文件版本為準；不是歷史時點的已知版本。"
+      ],
+      "exceptions": [],
+      "contradicts": [],
+      "supersedes": null,
+      "content_hash": "57a8c5e21f7a2da04707b7e2951a19d5caf1bfc44fd3d90a7432533e17d22fa5"
+    },
+    {
+      "id": "K03",
+      "version": 1,
+      "kind": "fact",
+      "claim": "TMF 日盤交易時間為 08:45–13:45，夜盤為 15:00–次日 05:00；到期月份契約最後交易日的日盤至 13:30，且該到期契約當日沒有夜盤。時間採 Asia/Taipei。",
+      "source_ids": [
+        "S01"
+      ],
+      "source_locator": "S01: 契約規格表：交易時間",
+      "instrument": "TAIFEX:TMF",
+      "published_at": null,
+      "available_at": null,
+      "retrieved_at": "2026-10-02T10:19:40.099450+00:00",
+      "review_due_at": null,
+      "status": "reviewed",
+      "assumptions": [
+        "以本輪取得的官方文件版本為準；不是歷史時點的已知版本。"
+      ],
+      "exceptions": [
+        "遇休市、天然災害等特殊情況仍須查官方交易日曆與公告。"
+      ],
+      "contradicts": [],
+      "supersedes": null,
+      "content_hash": "d1fda2994b873875dd86c8224cc773190ec8777225adb870e9f586784c3143a6"
+    },
+    {
+      "id": "K04",
+      "version": 1,
+      "kind": "fact",
+      "claim": "TMF 最後交易日通常為交割月份第 3 個星期三；若遇假日或不可抗力未能交易，改為最近的次一營業日；到期採現金交割。",
+      "source_ids": [
+        "S01"
+      ],
+      "source_locator": "S01: 契約規格表：最後交易日; S01: 契約規格表下方假日例外; S01: 契約規格表：交割方式",
+      "instrument": "TAIFEX:TMF",
+      "published_at": null,
+      "available_at": null,
+      "retrieved_at": "2026-10-02T10:19:40.099450+00:00",
+      "review_due_at": null,
+      "status": "reviewed",
+      "assumptions": [
+        "以本輪取得的官方文件版本為準；不是歷史時點的已知版本。"
+      ],
+      "exceptions": [
+        "最後結算價不是任意選取的收盤成交價；本輪未建立完整結算價計算器。"
+      ],
+      "contradicts": [],
+      "supersedes": null,
+      "content_hash": "ead942b52f80c55ecfad35d3c1a7fef991a1a5b3fece12ddf4106c2e409eb34e"
+    },
+    {
+      "id": "K05",
+      "version": 1,
+      "kind": "fact",
+      "claim": "盤後交易（夜盤）以一般交易時段收盤為交易及結算作業的劃分點，夜盤交易歸屬次一一般交易時段。",
+      "source_ids": [
+        "S02"
+      ],
+      "source_locator": "S02: 交易及部位歸屬原則",
+      "instrument": "TAIFEX:TMF",
+      "published_at": null,
+      "available_at": null,
+      "retrieved_at": "2026-10-02T10:18:59.077279+00:00",
+      "review_due_at": null,
+      "status": "reviewed",
+      "assumptions": [
+        "以本輪取得的官方文件版本為準；不是歷史時點的已知版本。"
+      ],
+      "exceptions": [
+        "本輪沒有取得完整假日日曆與行情樣本，尚未驗證跨夜資料轉換程式。"
+      ],
+      "contradicts": [],
+      "supersedes": null,
+      "content_hash": "3fc42424650ea90bbc3ca249a954350e911731822dd5bfaa23e36b5a65fce9d5"
+    },
+    {
+      "id": "K06",
+      "version": 1,
+      "kind": "fact",
+      "claim": "期交所盤後交易制度下，ROD 委託僅在該委託申報的交易時段有效；「當日有效」調整為「當盤有效」。",
+      "source_ids": [
+        "S02"
+      ],
+      "source_locator": "S02: 委託申報種類",
+      "instrument": "TAIFEX:TMF",
+      "published_at": null,
+      "available_at": null,
+      "retrieved_at": "2026-10-02T10:18:59.077279+00:00",
+      "review_due_at": null,
+      "status": "reviewed",
+      "assumptions": [
+        "以本輪取得的官方文件版本為準；不是歷史時點的已知版本。"
+      ],
+      "exceptions": [
+        "未驗證任何券商 API 是否另提供自動重新送單功能。"
+      ],
+      "contradicts": [],
+      "supersedes": null,
+      "content_hash": "5216a753894cb9f9677af741cf396e0bf0b5b87d9d2ef10ceeddb9dd88a00e65"
+    },
+    {
+      "id": "K07",
+      "version": 1,
+      "kind": "fact",
+      "claim": "本輪擷取的期交所保證金頁列 TMF 結算／維持／原始保證金為 25,950／26,900／35,050 元，頁面更新日期為 2026-08-12；契約規格要求期貨商收取標準不得低於公告的原始及維持水準。",
+      "source_ids": [
+        "S03",
+        "S01"
+      ],
+      "source_locator": "S03: 股價指數類：欄位順序; S03: 股價指數類：微型臺指期貨列; S03: 表格下方更新日期; S01: 契約規格表：保證金",
+      "instrument": "TAIFEX:TMF",
+      "published_at": null,
+      "available_at": null,
+      "retrieved_at": "2026-10-02T10:19:40.099450+00:00",
+      "review_due_at": null,
+      "status": "reviewed",
+      "assumptions": [
+        "以本輪取得的官方文件版本為準；不是歷史時點的已知版本。"
+      ],
+      "exceptions": [
+        "未取得生效公告或券商實收規則；不能把此數值當成歷史回測保證金或個人帳戶要求。"
+      ],
+      "contradicts": [],
+      "supersedes": null,
+      "content_hash": "1ec42312dfd964475d9155553df228730e8a38cf6ec8bb7b610bb54411e41221"
+    },
+    {
+      "id": "K08",
+      "version": 1,
+      "kind": "fact",
+      "claim": "TradingView 公開商品頁存在 TAIFEX:TMF1!，名稱為 MICRO TAIEX FUTURES，類型標示 Continuous contract（連續合約）。",
+      "source_ids": [
+        "S04"
+      ],
+      "source_locator": "S04: 頁面標題; S04: 商品頁標頭",
+      "instrument": "TAIFEX:TMF",
+      "published_at": null,
+      "available_at": null,
+      "retrieved_at": "2026-10-02T10:19:39.589152+00:00",
+      "review_due_at": null,
+      "status": "reviewed",
+      "assumptions": [
+        "以本輪取得的官方文件版本為準；不是歷史時點的已知版本。"
+      ],
+      "exceptions": [
+        "換月規則、復權設定、資料歷史、帳號可用權限與實際 Pine 圖表操作尚未驗證。"
+      ],
+      "contradicts": [],
+      "supersedes": null,
+      "content_hash": "cced1613cf79a7d78990f5fc962ddbc83ada468b636ef7c321a0877bb960d38e"
+    },
+    {
+      "id": "K09",
+      "version": 1,
+      "kind": "fact",
+      "claim": "Pine 策略 broker emulator 預設最早在下一個可用 tick 成交；預設每根 K 線收盤後計算時，收盤產生的市價單通常在下一根 K 線開盤成交。",
+      "source_ids": [
+        "S05"
+      ],
+      "source_locator": "S05: #orders-and-trades; S05: #orders-and-trades",
+      "instrument": "ANY:PINE",
+      "published_at": null,
+      "available_at": null,
+      "retrieved_at": "2026-10-02T10:16:04.811635+00:00",
+      "review_due_at": null,
+      "status": "reviewed",
+      "assumptions": [
+        "以本輪取得的官方文件版本為準；不是歷史時點的已知版本。"
+      ],
+      "exceptions": [
+        "process_orders_on_close、逐 tick 計算、委託種類與其他執行設定會改變行為；此主張不是所有委託的共同成交規則。"
+      ],
+      "contradicts": [],
+      "supersedes": null,
+      "content_hash": "ff52456494b067ac4248da5a61e93d0d8ac91590f30158ff7073e94a8ba2fb24"
+    },
+    {
+      "id": "K10",
+      "version": 1,
+      "kind": "procedure",
+      "claim": "使用 request.*() 取得高週期資料時，不應在未對資料序列作歷史位移的情況下使用 barmerge.lookahead_on，以免把未來資訊洩漏到歷史。",
+      "source_ids": [
+        "S05"
+      ],
+      "source_locator": "S05: #lookahead-bias",
+      "instrument": "ANY:PINE",
+      "published_at": null,
+      "available_at": null,
+      "retrieved_at": "2026-10-02T10:16:04.811635+00:00",
+      "review_due_at": null,
+      "status": "reviewed",
+      "assumptions": [
+        "以本輪取得的官方文件版本為準；不是歷史時點的已知版本。"
+      ],
+      "exceptions": [
+        "不能把「有位移」直接等同完全沒有偏差；資料、其他計算設定與整個策略仍需檢查。本輪未編譯 Pine。"
+      ],
+      "contradicts": [],
+      "supersedes": null,
+      "content_hash": "0cc1667e7bdf4ce36d4cf1ef552a7cdf1acff41b971f35f6233ad649d025c247"
+    }
+  ],
+  "annotations": {
+    "K01": {
+      "title": "TMF 身分與每點價值",
+      "evidence_ids": [
+        "E01",
+        "E02"
+      ],
+      "tags": [
+        "TMF",
+        "商品識別",
+        "每點價值",
+        "契約乘數"
+      ],
+      "timeframe": "商品制度",
+      "confidence_basis": "逐項比對官方原文短摘錄與適用例外；不是模型信心百分比。",
+      "reviewed_at": "2026-10-02T10:33:26.933494+00:00",
+      "reviewer": "本輪 Codex Agent；未經使用者或獨立研究者審閱",
+      "implications": [
+        "研究計算：忽略交易成本時，多單一口上漲 100 點的毛損益為 100 × 10 = 1,000 元；這是算術推導，不是交易績效。"
+      ],
+      "recheck_trigger": "實際資料整合、回測或交易使用前重新查核來源與版本。"
+    },
+    "K02": {
+      "title": "最小跳動",
+      "evidence_ids": [
+        "E03"
+      ],
+      "tags": [
+        "TMF",
+        "最小跳動",
+        "tick",
+        "價格單位"
+      ],
+      "timeframe": "商品制度",
+      "confidence_basis": "逐項比對官方原文短摘錄與適用例外；不是模型信心百分比。",
+      "reviewed_at": "2026-10-02T10:33:26.933494+00:00",
+      "reviewer": "本輪 Codex Agent；未經使用者或獨立研究者審閱",
+      "implications": [
+        "策略下單價、滑價和成本換算需符合 tick 與整數口數；每點價值與 tick 數是不同欄位。"
+      ],
+      "recheck_trigger": "實際資料整合、回測或交易使用前重新查核來源與版本。"
+    },
+    "K03": {
+      "title": "日夜盤與到期合約例外",
+      "evidence_ids": [
+        "E04"
+      ],
+      "tags": [
+        "TMF",
+        "日盤",
+        "夜盤",
+        "交易時間",
+        "到期"
+      ],
+      "timeframe": "商品制度",
+      "confidence_basis": "逐項比對官方原文短摘錄與適用例外；不是模型信心百分比。",
+      "reviewed_at": "2026-10-02T10:33:26.933494+00:00",
+      "reviewer": "本輪 Codex Agent；未經使用者或獨立研究者審閱",
+      "implications": [
+        "資料品質檢查要依契約月份套用時段；到期例外不代表所有月份都沒有夜盤。"
+      ],
+      "recheck_trigger": "實際資料整合、回測或交易使用前重新查核來源與版本。"
+    },
+    "K04": {
+      "title": "最後交易日與交割",
+      "evidence_ids": [
+        "E05",
+        "E06",
+        "E07"
+      ],
+      "tags": [
+        "TMF",
+        "最後交易日",
+        "到期",
+        "現金交割",
+        "假日"
+      ],
+      "timeframe": "商品制度",
+      "confidence_basis": "逐項比對官方原文短摘錄與適用例外；不是模型信心百分比。",
+      "reviewed_at": "2026-10-02T10:33:26.933494+00:00",
+      "reviewer": "本輪 Codex Agent；未經使用者或獨立研究者審閱",
+      "implications": [
+        "換月與到期處理不能只用每月固定曆日；保留實際到期月份與交易日曆。"
+      ],
+      "recheck_trigger": "實際資料整合、回測或交易使用前重新查核來源與版本。"
+    },
+    "K05": {
+      "title": "夜盤交易日歸屬",
+      "evidence_ids": [
+        "E08"
+      ],
+      "tags": [
+        "TMF",
+        "夜盤",
+        "盤後交易",
+        "交易日歸屬",
+        "跨日"
+      ],
+      "timeframe": "商品制度",
+      "confidence_basis": "逐項比對官方原文短摘錄與適用例外；不是模型信心百分比。",
+      "reviewed_at": "2026-10-02T10:33:26.933494+00:00",
+      "reviewer": "本輪 Codex Agent；未經使用者或獨立研究者審閱",
+      "implications": [
+        "資料需分開記錄時間戳、曆日與交易所交易日；週末與休市應用官方日曆，不能單純加一天。"
+      ],
+      "recheck_trigger": "實際資料整合、回測或交易使用前重新查核來源與版本。"
+    },
+    "K06": {
+      "title": "ROD 是當盤有效",
+      "evidence_ids": [
+        "E09"
+      ],
+      "tags": [
+        "TMF",
+        "ROD",
+        "委託有效",
+        "當盤有效",
+        "訂單"
+      ],
+      "timeframe": "商品制度",
+      "confidence_basis": "逐項比對官方原文短摘錄與適用例外；不是模型信心百分比。",
+      "reviewed_at": "2026-10-02T10:33:26.933494+00:00",
+      "reviewer": "本輪 Codex Agent；未經使用者或獨立研究者審閱",
+      "implications": [
+        "日盤未成交委託不能假設自動延續到夜盤；回測需記錄委託有效時段與到期取消。"
+      ],
+      "recheck_trigger": "實際資料整合、回測或交易使用前重新查核來源與版本。"
+    },
+    "K07": {
+      "title": "保證金快照與券商下限",
+      "evidence_ids": [
+        "E10",
+        "E11",
+        "E12",
+        "E13"
+      ],
+      "tags": [
+        "TMF",
+        "保證金",
+        "原始保證金",
+        "維持保證金",
+        "時間版本"
+      ],
+      "timeframe": "商品制度",
+      "confidence_basis": "逐項比對官方原文短摘錄與適用例外；不是模型信心百分比。",
+      "reviewed_at": "2026-10-02T10:33:26.933494+00:00",
+      "reviewer": "本輪 Codex Agent；未經使用者或獨立研究者審閱",
+      "implications": [
+        "這是 2026-10-02 所見頁面快照；數值不是永久常數，頁面更新日也不是已查明的生效日。實際保證金需重查當時公告與券商規則。"
+      ],
+      "recheck_trigger": "實際資料整合、回測或交易使用前重新查核來源與版本。"
+    },
+    "K08": {
+      "title": "TradingView 商品與連續合約",
+      "evidence_ids": [
+        "E14",
+        "E15"
+      ],
+      "tags": [
+        "TMF",
+        "TradingView",
+        "TMF1!",
+        "連續合約",
+        "商品代碼"
+      ],
+      "timeframe": "商品制度",
+      "confidence_basis": "逐項比對官方原文短摘錄與適用例外；不是模型信心百分比。",
+      "reviewed_at": "2026-10-02T10:33:26.933494+00:00",
+      "reviewer": "本輪 Codex Agent；未經使用者或獨立研究者審閱",
+      "implications": [
+        "已找到對應商品頁；連續序列與實際到期月份需分開保存。公開商品頁不等於已取得行情下載權。"
+      ],
+      "recheck_trigger": "實際資料整合、回測或交易使用前重新查核來源與版本。"
+    },
+    "K09": {
+      "title": "Pine 預設市價單成交時點",
+      "evidence_ids": [
+        "E16",
+        "E17"
+      ],
+      "tags": [
+        "Pine",
+        "回測",
+        "市價單",
+        "收盤",
+        "預設",
+        "成交時點"
+      ],
+      "timeframe": "Pine 計算與成交模型",
+      "confidence_basis": "逐項比對官方原文短摘錄與適用例外；不是模型信心百分比。",
+      "reviewed_at": "2026-10-02T10:33:26.933494+00:00",
+      "reviewer": "本輪 Codex Agent；未經使用者或獨立研究者審閱",
+      "implications": [
+        "訊號產生時間與成交時間分開記錄，跨引擎對帳需對齊計算與成交設定。"
+      ],
+      "recheck_trigger": "實際資料整合、回測或交易使用前重新查核來源與版本。"
+    },
+    "K10": {
+      "title": "高週期 lookahead 的必要檢查",
+      "evidence_ids": [
+        "E18"
+      ],
+      "tags": [
+        "Pine",
+        "lookahead_on",
+        "高週期",
+        "資料序列",
+        "未來資料洩漏"
+      ],
+      "timeframe": "Pine 計算與成交模型",
+      "confidence_basis": "逐項比對官方原文短摘錄與適用例外；不是模型信心百分比。",
+      "reviewed_at": "2026-10-02T10:33:26.933494+00:00",
+      "reviewer": "本輪 Codex Agent；未經使用者或獨立研究者審閱",
+      "implications": [
+        "歷史位移需要對照實際請求的週期與策略使用方式；記錄訊號當時是否已知。"
+      ],
+      "recheck_trigger": "實際資料整合、回測或交易使用前重新查核來源與版本。"
+    }
+  }
+}

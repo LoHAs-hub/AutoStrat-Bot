@@ -1,0 +1,26 @@
+{
+  "id": "tmf-002-A",
+  "version": 1,
+  "instrument": "TAIFEX:TMF",
+  "status": "draft",
+  "knowledge_refs": [
+    {"id": "K01", "version": 1},
+    {"id": "K02", "version": 1},
+    {"id": "K03", "version": 1},
+    {"id": "K05", "version": 1},
+    {"id": "K06", "version": 1},
+    {"id": "K08", "version": 1},
+    {"id": "K09", "version": 1},
+    {"id": "K10", "version": 1}
+  ],
+  "principle_refs": ["P001"],
+  "hypothesis": "微台完成根突破前 20 根水平後，等待回測與重新收回，可能比首次突破直接進場減少部分失敗突破；未實測。完整雙向規則與反例見 CANDIDATES.md A。",
+  "entry": "TradingView TAIFEX:TMF1! 60 分鐘標準 K 線，前 20 根極值與 ATR14；突破後凍結水平與 ATR，在同盤最多 6 根內等候 ±0.25ATR 回測及收回。只在完成根產生訊號，下一可用 tick 模擬市價成交，一口，不加碼；完整規則以 CANDIDATES.md v1 為準。",
+  "exit": "初始停損為等待期極值外加 0.1ATR 並取整 tick；訊號時風險須 0.5–2ATR，成交後按實際 E 計算 2R 目標。停損不放寬，最多持有 12 根後發出市價退出。跳空失效已成交仍記錄並在下一 tick 退出；同根歧義與跨盤風險另列。",
+  "risk": {"per_trade_twd": null, "daily_loss_twd": null, "max_contracts": 1},
+  "data_snapshot_id": null,
+  "timeframe": "60m research starting point; not optimized",
+  "session": "含日夜盤；setup 不跨盤，持倉可跨盤為待審研究假設，ROD 不跨盤延續",
+  "cost_model_id": "tmf-002-synthetic-v1",
+  "invalidation": "無可用指標、資料缺漏或設定不明時不判定訊號；失敗突破與連虧停止見完整規則。沒有個人風險預算、資料權限、編譯／驗證前，維持研究草案，不能作個人可執行計畫。"
+}

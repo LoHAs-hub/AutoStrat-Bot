@@ -1,0 +1,82 @@
+{
+  "review_method": "本輪 Agent 人工核對原文與答案；沒有獨立審查者，沒有 LLM 自動問答性能測試。",
+  "answers": [
+    {
+      "question_id": "Q01",
+      "supporting_unit_ids": [
+        "K01",
+        "K02"
+      ],
+      "status": "answered",
+      "answer": "一口每點新臺幣 10 元；最小跳動為 1 點，即一口 10 元。這不包含手續費、交易稅或滑價。"
+    },
+    {
+      "question_id": "Q02",
+      "supporting_unit_ids": [
+        "K03"
+      ],
+      "status": "answered",
+      "answer": "日盤 08:45–13:45，夜盤 15:00–次日 05:00（台北）；到期月份契約最後交易日到 13:30，該到期契約沒有夜盤。"
+    },
+    {
+      "question_id": "Q03",
+      "supporting_unit_ids": [
+        "K05"
+      ],
+      "status": "answered",
+      "answer": "不能直接用成交曆日；夜盤歸屬次一一般交易時段，須搭配交易日曆處理週末與休市。"
+    },
+    {
+      "question_id": "Q04",
+      "supporting_unit_ids": [
+        "K04"
+      ],
+      "status": "answered",
+      "answer": "通常是交割月份第 3 個星期三，假日或不可抗力不能交易時順延到最近次一營業日；到期為現金交割。"
+    },
+    {
+      "question_id": "Q05",
+      "supporting_unit_ids": [
+        "K07"
+      ],
+      "status": "answered",
+      "answer": "不能。本輪僅有頁面快照，原始保證金列 35,050 元；更新日不是生效日證據，實際使用前須重查公告與券商規則。"
+    },
+    {
+      "question_id": "Q06",
+      "supporting_unit_ids": [
+        "K08"
+      ],
+      "status": "answered",
+      "answer": "商品頁為 TAIFEX:TMF1!，名稱 MICRO TAIEX FUTURES，標示連續合約；尚未驗證行情權限與換月/復權設定。"
+    },
+    {
+      "question_id": "Q07",
+      "supporting_unit_ids": [
+        "K09"
+      ],
+      "status": "answered",
+      "answer": "在預設收盤計算下，市價單最早下一個可用 tick，通常為下一根 K 線開盤成交；改變計算/成交設定時須另核對。"
+    },
+    {
+      "question_id": "Q08",
+      "supporting_unit_ids": [
+        "K10"
+      ],
+      "status": "answered",
+      "answer": "官方要求不要對未作歷史位移的序列使用 lookahead_on，尤其高週期請求；仍須檢查其他未來資料洩漏途徑。"
+    },
+    {
+      "question_id": "Q09",
+      "supporting_unit_ids": [],
+      "status": "abstained",
+      "answer": "來源不足：本輪沒有你的券商、帳戶費率或成交費用文件，不能填入實際每口手續費。需要券商費率或成交明細。"
+    },
+    {
+      "question_id": "Q10",
+      "supporting_unit_ids": [],
+      "status": "abstained",
+      "answer": "來源不足：本輪沒有行情快照、候選策略回測、樣本外驗證或模擬紀錄，不能推薦已證明穩定獲利的 TMF 策略。"
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "cycle_id": "tmf-002",
+  "validated_at": "2026-10-02T15:08:47.759749+00:00",
+  "status": "review_packet_integrity_passed_only",
+  "checks": [
+    {
+      "name": "existing_strategy_schema_and_draft_state",
+      "status": "passed",
+      "details": "2 drafts; no personal risk budget or historical data snapshot claimed"
+    },
+    {
+      "name": "inherited_knowledge_versions",
+      "status": "passed",
+      "details": "All 16 references exist in tmf-001; P001 retained"
+    },
+    {
+      "name": "source_identity_and_reference_roles",
+      "status": "passed",
+      "details": "8 source records; TXF opinions explicitly separated from TMF numerical evidence"
+    },
+    {
+      "name": "local_evidence_hashes",
+      "status": "passed",
+      "details": "3 screenshot files match manifest; source webpage hashes retained as original retrieval metadata, not re-fetched"
+    },
+    {
+      "name": "synthetic_cost_units_and_break_even_arithmetic",
+      "status": "passed",
+      "details": "3 component-reconciled costs and 6 binary-outcome examples; no empirical cost or performance result"
+    },
+    {
+      "name": "execution_and_scope_disclosures",
+      "status": "passed",
+      "details": "Exploration windows reused for selection; backtest and holdout unrun; no live/paid/publication/application changes"
+    },
+    {
+      "name": "local_review_document_links",
+      "status": "passed",
+      "details": "22 local links resolve; all 6 review documents exist"
+    },
+    {
+      "name": "review_packet_data_boundary",
+      "status": "passed",
+      "details": "No historical market CSV or quarantined capture in review directory"
+    }
+  ],
+  "passed_checks": 8,
+  "strategy_effectiveness": "unknown; not tested",
+  "pine_compilation": "unrun",
+  "historical_backtest": "unrun",
+  "holdout_evaluation": "unrun"
+}

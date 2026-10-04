@@ -1,0 +1,26 @@
+{
+  "id": "tmf-002-B",
+  "version": 1,
+  "instrument": "TAIFEX:TMF",
+  "status": "draft",
+  "knowledge_refs": [
+    {"id": "K01", "version": 1},
+    {"id": "K02", "version": 1},
+    {"id": "K03", "version": 1},
+    {"id": "K05", "version": 1},
+    {"id": "K06", "version": 1},
+    {"id": "K08", "version": 1},
+    {"id": "K09", "version": 1},
+    {"id": "K10", "version": 1}
+  ],
+  "principle_refs": ["P001"],
+  "hypothesis": "微台事前整理環境中，越過區間後收回內側的假突破可能回到區間中點；強勢趨勢是反例，未實測。詳見 CANDIDATES.md B。",
+  "entry": "TradingView TAIFEX:TMF1! 60 分鐘；前 20 根區間寬≤4ATR14、前 20 根淨位移≤1ATR。當根越界至少 0.1ATR、收回區間且未越過中點時形成訊號；事前風險 0.5–2ATR、目標距離大於中成本情境。下一 tick 模擬市價成交，一口，雙向對稱，不加碼。",
+  "exit": "停損在假突破根極值外 0.1ATR、目標為凍結區間中點，取整 tick；最多持有 6 根後發出市價退出。實際成交已越過目標／停損或風險超限時記錄成交，再於下一 tick 退出並算成本。完整規則見 CANDIDATES.md v1。",
+  "risk": {"per_trade_twd": null, "daily_loss_twd": null, "max_contracts": 1},
+  "data_snapshot_id": null,
+  "timeframe": "60m research starting point; not optimized",
+  "session": "含日夜盤；持倉可跨盤為待審研究假設，ROD 不跨盤延續",
+  "cost_model_id": "tmf-002-synthetic-v1",
+  "invalidation": "趨勢逆勢損失、窄區間成本侵蝕、資料或圖表設定缺口均可能否定假說；未有個人風險預算與原生測試前維持草案，不能作個人可執行計畫。"
+}

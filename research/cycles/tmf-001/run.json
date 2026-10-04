@@ -1,0 +1,63 @@
+{
+  "cycle_id": "tmf-001",
+  "timezone": "Asia/Taipei",
+  "started_date": "2026-10-02",
+  "recorded_at": "2026-10-02T10:33:26.933494+00:00",
+  "base_commit": "95a1fd8a698990bd24e95c9c283c53303f25d58b",
+  "mode": "本次聊天任務內由 Codex 自主完成的小型研究；不是已部署的背景知識庫 Agent",
+  "goal": "建立 TMF 契約與交易制度的可靠小核心，辨認後續回測的資料/時點陷阱。",
+  "selection_reason": "依專案 P0 優先序，先查商品、日夜盤與回測偏差；官方來源优先，不先收集大量技術指標。",
+  "tools": [
+    "native Git read and fast-forward",
+    "Python urllib HTTPS with inherited proxy and TLS verification",
+    "SQLite FTS5 keyword retrieval",
+    "jsonschema validation",
+    "repository npm run verify"
+  ],
+  "model_provider_for_application": null,
+  "market_data_downloaded": false,
+  "background_schedule": false,
+  "observed_source_conflicts": [],
+  "conflict_note": "本輪五份來源未發現直接矛盾；舊文件 MXF1! 是研究商品選擇落差，已被使用者 TMF 決策取代，不是兩份來源的事實衝突。",
+  "encountered_failures": [
+    {
+      "operation": "期交所 /cht/4/afterHoursTrading、/cht/2/afterHoursTrading、/cht/5/indexFuturesMargins、/cht/4/tradingRules 路徑探索",
+      "diagnosis": "轉址到 404.htm，雖 HTTP 200 仍不可當作有效來源",
+      "resolution": "從官方頁面導覽取得 aHIntroduction 與 indexMarging"
+    },
+    {
+      "operation": "讀取 Pine 文件",
+      "diagnosis": "伺服器回 gzip，首次文字解碼不正確",
+      "resolution": "依 gzip magic 解壓後重新抽取；保留傳輸與解壓後 SHA-256"
+    },
+    {
+      "operation": "使用 BeautifulSoup 抽取連結",
+      "diagnosis": "目前未安裝 bs4",
+      "resolution": "改用 Python 標準庫 HTMLParser，未新增套件"
+    }
+  ],
+  "open_questions": [
+    "TMF 原生資料可取得的起點、歷史長度、授權及一日日夜盤樣本",
+    "TradingView TMF1! 的換月/復權方法、實際帳號可用權限與資料使用權",
+    "保證金調整公告的生效時間與券商實收要求",
+    "交易稅、券商手續費、bid/ask 與滑價模型",
+    "使用者的資金、週期、方向、留倉及數值風控決策"
+  ],
+  "candidate_followups": [
+    {
+      "priority": 1,
+      "question": "TMF 原生歷史資料能合法取得到哪裡，如何保留交易日與合約月份？",
+      "reason": "下一輪先確認資料可用性，避免把連續合約或其他商品當成原生 TMF。"
+    },
+    {
+      "priority": 2,
+      "question": "用一份完整日夜盤樣本能否驗證缺棒、交易日和換月邊界？",
+      "reason": "取得合法樣本後才能驗證資料處理，不先推進績效分析。"
+    },
+    {
+      "priority": 3,
+      "question": "哪些保證金/成本欄位需要生效版本而非永久常數？",
+      "reason": "把本輪制度知識轉為成本和資金需求的輸入契約。"
+    }
+  ]
+}

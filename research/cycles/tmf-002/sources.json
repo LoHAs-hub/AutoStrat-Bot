@@ -1,0 +1,157 @@
+{
+  "cycle_id": "tmf-002",
+  "version": 1,
+  "source_records": [
+    {
+      "id": "M01",
+      "title": "TradingView 微台商品頁",
+      "url": "https://www.tradingview.com/symbols/TAIFEX-TMF1!/",
+      "original_instrument": "TAIFEX:TMF1!",
+      "kind": "platform_instrument_page",
+      "retrieved_at": "2026-10-02T14:26:55.808534+00:00",
+      "snapshot_sha256": "de0593fdd62d1f787b6bf77888b46f005315ff6e1a97763e49926ee456e71dac",
+      "summary": "入口身分；公開靜態頁不是完整行情資料集。"
+    },
+    {
+      "id": "M02",
+      "title": "TradingView 微台日線圖",
+      "url": "https://www.tradingview.com/chart/?symbol=TAIFEX%3ATMF1%21&interval=D",
+      "original_instrument": "TAIFEX:TMF1!",
+      "kind": "human_readable_chart",
+      "retrieved_at": "2026-10-02T14:34:48.158802+00:00",
+      "snapshot_sha256": null,
+      "summary": "實際可見微台日線；目視探索，未完成根與調整設定受限制。",
+      "evidence_ids": [
+        "O01"
+      ],
+      "use": "hypothesis_selection_only",
+      "ohlcv_dataset_included": false
+    },
+    {
+      "id": "M03",
+      "title": "TradingView 微台 1h 圖及內建 ATR 嘗試",
+      "url": "https://www.tradingview.com/chart/?symbol=TAIFEX%3ATMF1%21&interval=60",
+      "original_instrument": "TAIFEX:TMF1!",
+      "kind": "human_readable_chart",
+      "retrieved_at": "2026-10-02T14:48:16.532988+00:00",
+      "snapshot_sha256": null,
+      "summary": "實際圖表含延長時段；加入內建 ATR 遇免費帳號提示。",
+      "evidence_ids": [
+        "O02",
+        "O03"
+      ],
+      "use": "hypothesis_selection_and_access_diagnosis",
+      "ohlcv_dataset_included": false
+    },
+    {
+      "id": "P01",
+      "title": "TradingView Terms of Use",
+      "url": "https://www.tradingview.com/policies/",
+      "original_instrument": null,
+      "kind": "platform_terms",
+      "retrieved_at": "2026-10-02T14:38:14.289788+00:00",
+      "snapshot_sha256": "05b4386eb1a291c6eba649a33aea3b22424abd910a5e716b551788bc20208fd9",
+      "summary": "第 3 節對非展示／機器處理的限制，停止外部批次行情分析；第 4 節要求圖表署名。",
+      "locator": "Sections 3 and 4",
+      "short_quote": "The content and market data provided on the TradingView platform",
+      "quote_role": "locator_only; full restriction paraphrased in OBSERVATIONS.md"
+    },
+    {
+      "id": "D01",
+      "title": "How to export chart data",
+      "url": "https://www.tradingview.com/support/solutions/43000537255-how-to-export-chart-data/",
+      "original_instrument": null,
+      "kind": "platform_help",
+      "retrieved_at": "2026-10-02T14:26:55.984504+00:00",
+      "snapshot_sha256": "9042ae4acfb1506e11452ef83a5e522b506e41f4e4df77a18748065ac10aad9c",
+      "summary": "平台支援圖表 CSV、限已載入資料；未匯出、不可推定外部處理權利。"
+    },
+    {
+      "id": "R01",
+      "title": "TXF! PREDIT",
+      "url": "https://www.tradingview.com/chart/TXF1!/vXto02f1-TXF-PREDIT/",
+      "original_instrument": "TAIFEX:TXF1!",
+      "kind": "community_opinion",
+      "retrieved_at": "2026-10-02T14:34:57.622459+00:00",
+      "snapshot_sha256": "049b96b3602c2c2503f60638d822782d03e958f0d013668389295ad862115776",
+      "summary": "漲勢及量能作延續觀點；只作機制靈感，不轉為 TMF 量價或績效。",
+      "author": "curtischangTW",
+      "page_display_date": "2024-08-13",
+      "page_time_attributes": [
+        "Tue, 13 Aug 2024 23:01:39 GMT"
+      ],
+      "use": "hypothesis_reference_only",
+      "available_at": null,
+      "tmf_numeric_evidence": false
+    },
+    {
+      "id": "R02",
+      "title": "TAIEX, 4 hour/-296 point",
+      "url": "https://www.tradingview.com/chart/TXF1!/edB4x0Mk-TAIEX-4-hour-296-point/",
+      "original_instrument": "TAIFEX:TXF1!",
+      "kind": "community_opinion",
+      "retrieved_at": "2026-10-02T14:34:57.681841+00:00",
+      "snapshot_sha256": "18402e556a14026de52579ec76e9151b271375f0acc87b34ea51c1aef7abef59",
+      "summary": "均線與 Adam Theory 轉折觀點；作者對圖中停損／停利線的依據亦有保留，未採其數值。",
+      "author": "Tonyder",
+      "page_display_date": "2023-10-02",
+      "page_time_attributes": [
+        "Mon, 02 Oct 2023 23:55:25 GMT",
+        "2023-04-22T12:16:22.694Z",
+        "2023-04-22T12:16:22.694Z"
+      ],
+      "use": "hypothesis_reference_only",
+      "available_at": null,
+      "tmf_numeric_evidence": false
+    },
+    {
+      "id": "F01",
+      "title": "期貨暨選擇權商品相關費用表",
+      "url": "https://www.taifex.com.tw/cht/4/feeSchedules",
+      "original_instrument": null,
+      "kind": "exchange_rule",
+      "retrieved_at": "2026-10-02T14:51:50.962556+00:00",
+      "snapshot_sha256": "5a449ca8bee77f9426e8cca76a978ee8446297ea48134e55c8cd700115bfe166",
+      "summary": "註 1 客戶費用另議、註 2 股價類稅率通則。擷取表未單列 TMF，未把 TX／MTX 經手費當作微台佣金。",
+      "locator": "註 1、註 2",
+      "tax_rate": 2e-05,
+      "tmf_specific_table_row_verified": false
+    }
+  ],
+  "evidence_records": [
+    {
+      "id": "O01",
+      "path": "evidence/daily.png",
+      "source_id": "M02",
+      "captured_at": "2026-10-02T14:34:48.158802+00:00",
+      "capture_time_precision": "capture completion",
+      "sha256": "5429eb3a98f8aa95fc10841e6c0203e518f92a9b084b50659e10189ee18fa6a6",
+      "bytes": 163872,
+      "attribution": "Charts by TradingView; original visible watermark retained"
+    },
+    {
+      "id": "O02",
+      "path": "evidence/hourly.png",
+      "source_id": "M03",
+      "captured_at": "2026-10-02T14:48:16.532988+00:00",
+      "capture_time_precision": "capture completion",
+      "sha256": "951f4cbee62f623300e879d4f094a76a14ec033a8f64649f0b6d238e6eac5033",
+      "bytes": 179013,
+      "attribution": "Charts by TradingView; original visible watermark retained"
+    },
+    {
+      "id": "O03",
+      "path": "evidence/indicator-account-gate.png",
+      "source_id": "M03",
+      "captured_at": "2026-10-02T14:48:14+00:00",
+      "capture_time_precision": "nearby browser text",
+      "sha256": "bc871cf4c996b53825959f6fda77606f6d6b33365087d90c5a83daad3b8c3d0a",
+      "bytes": 346033,
+      "attribution": "Charts by TradingView; original visible watermark retained"
+    }
+  ],
+  "inherited_sources": "../tmf-001/sources.json",
+  "inherited_knowledge": "../tmf-001/knowledge.json",
+  "raw_market_dataset_included": false,
+  "full_articles_included": false
+}
