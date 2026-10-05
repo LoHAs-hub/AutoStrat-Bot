@@ -2,7 +2,8 @@
 
 使用繁體中文。先讀 `docs/HANDOFF.md`、`docs/PROJECT.md`，需要時再讀深層文件。
 
-- 2026-10-05 最新接續：使用者希望由 Agent 操作登入後的 TradingView，人工只處理登入／2FA及必要批准；不要再把完整 NATIVE-RUN 當成人工必做清單。先讀 `docs/TRADINGVIEW-ACCESS.md`。此雲端缺私密瀏覽器接管能力；官方 ChatGPT Agent 模式是另一個可評估的執行位置，不能宣稱本聊天室已接通。
+- 2026-10-05 最新接續：使用者確認環境只有本人存取、GPT 沒有 Agent 模式，要求在目前 Codex 雲端登入 TradingView。先讀 `docs/TRADINGVIEW-ACCESS.md`，不要再重問已回答的存取問題或轉介 Agent 模式。人工只處理登入／2FA及必要批准；不要把完整 NATIVE-RUN 當成人工清單。
+- 已實測標準核准執行路徑能以 Chromium namespace／Seccomp 沙箱及 TLS 開啟匿名 Pine Editor；一般指令沙箱內的啟動失敗是執行路徑差異，不等於瀏覽器完全不可用。仍缺私密人工接管／ingress，無可呼叫工具或已驗證入口；VPN 指引的向外 TCP 轉發不提供 inbound。未登入前勿聲稱完整帳戶操作已可行。
 - 登入前核對共享權限、session 保存／撤銷與私密接管。不索取／匯入密碼、OTP、Cookie、token 或整個 profile；不開公開 VNC／CDP 隧道。Repo 是 public；`.gitignore` 不是憑證隔離或快照保護。研究用登入授權不包含券商／實盤、付費、公開分享或帳號設定變更。
 - 10/5 已保存網路 allowlist、start_skill 及可執行 install_script 的環境草稿；讀回一致，但 runtime 仍 unrestricted／enforcement unknown，需設定流程儲存／發布後再驗證。記錄在 `docs/TRADINGVIEW-ACCESS-CONFIG.json`，不得把草稿當成已生效或已安全托管帳號。
 

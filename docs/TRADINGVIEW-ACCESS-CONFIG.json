@@ -68,14 +68,59 @@
     "post_publication_egress_allow_deny": "not_run; runtime remains unrestricted"
   },
   "outstanding": [
-    "confirm environment sharing/access controls",
-    "confirm whether user has existing ChatGPT Agent mode",
-    "review/save/publish environment draft then verify runtime enforcement and permitted/denied destinations",
-    "verify private browser takeover and account/session data handling before any credentialed run"
+    "confirm whether the Codex client/platform provides an authenticated private Browser/Desktop/Ports entry accessible to this environment",
+    "if absent, obtain a supported private interactive endpoint from the platform/operator; do not substitute a public VNC/CDP or ad-hoc reverse tunnel",
+    "review/save/publish saved network draft, then verify runtime enforcement and permitted/denied destinations",
+    "verify takeover, output handling, session disposal and no-credential snapshot handling before user login"
   ],
   "excluded_from_repository": [
     "credentials, cookie/session exports, browser profiles",
     "raw environment identifiers, proxy details, full status/config outputs",
     "full third-party webpages and original request text from old install field"
-  ]
+  ],
+  "followup_2026_10_05": {
+    "user_confirmed_environment_access": "sole user; accepted user statement, not independently audited platform ACL",
+    "user_confirmed_chatgpt_agent_mode": false,
+    "requested_execution_location": "current Codex cloud; do not redirect to unavailable ChatGPT Agent mode",
+    "browser_test": {
+      "checked_at": "2026-10-05T03:25:11.210345+00:00",
+      "default_command_path": "failed; sandbox helper ownership as seen in command sandbox is unsuitable",
+      "namespace_alternative_in_default_path": "failed: No usable sandbox",
+      "standard_approved_execution_path": "passed",
+      "chromium_sandbox_requested": true,
+      "no_sandbox_flag_present": false,
+      "reported_browser_sandbox": {
+        "layer_1": "Namespace",
+        "pid_namespaces": true,
+        "network_namespaces": true,
+        "seccomp_bpf": true,
+        "seccomp_tsync": true,
+        "yama_ptrace_protection": false
+      },
+      "tls_verification": true,
+      "public_pine_editor_http_status": 200,
+      "public_pine_editor_title": "Untitled script — Pine Script® Editor",
+      "existing_profile_used": false,
+      "credentials_accessed": false,
+      "login_attempted": false,
+      "public_listener_created": false,
+      "limitation": "Anonymous browser operation only; not proof of a human takeover path, tenant/administrator isolation, storage retention or account-session safety"
+    },
+    "private_takeover": {
+      "callable_browser_or_ingress_tool": false,
+      "authenticated_private_preview_endpoint_available_to_agent": false,
+      "vpn_configured": false,
+      "tcp_grants_configured": false,
+      "supported_vpn_transport": "outbound only; runtime reference explicitly excludes inbound connections",
+      "client_ui_ingress_feature": "not observable from tools; asked user whether a private Browser/Desktop/Ports entry exists"
+    },
+    "runtime_network_policy": {
+      "mode": "unrestricted",
+      "state": "unknown"
+    },
+    "desired_network_draft": "restricted; still saved, not shown applied",
+    "current_decision": "Browser automation feasible, end-to-end private login not yet feasible with available capabilities. Do not ask user to enter account credentials here.",
+    "next_required_capability": "A platform-supported owner-only interactive browser/desktop or authenticated HTTPS private ingress, with a verifiable takeover and revocation path",
+    "credentialed_native_validation": "unrun"
+  }
 }

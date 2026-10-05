@@ -1,5 +1,9 @@
 # 執行進度
 
+- 2026-10-05（後續確認）：使用者確認只有本人能存取雲端、GPT 無 Agent 模式，要求在現有 Codex 雲端登入。已更新交接，不再重問／轉介不可用模式。
+- 2026-10-05：補做無帳號 Chromium 能力實測。一般執行路徑的 SUID helper 與 namespace 啟動失敗；平台標準核准執行路徑成功，保留 Namespace／Seccomp 與 TLS，Pine Editor HTTP 200。沒有關閉 sandbox、登入、讀憑證或建立公開 listener。
+- 2026-10-05：已確認目前工具無私密 browser takeover／ingress；既有 VPN 只向外轉發，不支援 inbound，且尚未配置。完整登入仍需平台私密互動入口；已詢問客戶端有無 Browser／Desktop／private Preview／Ports 功能。網域限制草稿仍未反映至 runtime。
+
 - 2026-10-05（台北）：使用者要求安全登入後由 Agent 跑原生驗證，人工只處理必要登入／審批。完成能力／設定查核：public GitHub、unrestricted runtime／enforcement unknown、沒有私密瀏覽器接管工具；無法核實完整 ACL／保存。沒有登入、讀憑證或建立公開桌面。
 - 2026-10-05：新增 TRADINGVIEW-ACCESS 方案、官方 Agent 模式交接指令與去除私密環境識別的設定紀錄；官方 takeover 可由人工登入再交回，但本聊天室未具備該能力，尚待使用者確認選單可用性及環境共享權限。
 - 2026-10-05：加入 Git 登入狀態忽略規則，18 個敏感路徑與 4 個研究路徑檢查通過；有限 tracked tree 常見金鑰模式零匹配，不是完整歷史／安全保證。既有 8/8 整合測試、Worker 建置、A2 25/25 合成測試通過，未重寫 A2 歷史驗證檔。

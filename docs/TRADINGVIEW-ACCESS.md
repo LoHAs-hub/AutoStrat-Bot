@@ -2,6 +2,18 @@
 
 更新：2026-10-05（台北）。目標是讓人工只負責登入／2FA、必要授權與重要結果審閱，由 Agent 執行 Pine 編譯、修正、原生核對與研究報告。這不是要求使用者逐項操作 NATIVE-RUN，也沒有新增實盤權限。
 
+## 最新確認：留在目前 Codex 雲端
+
+使用者已確認環境只有本人存取，且 GPT 沒有 Agent 模式；目前需求是直接在這個 Codex 雲端登入。接受這項使用者陳述，不再重問共享狀況，也不把下述 ChatGPT Agent 路線當成當前可用方案。
+
+**匿名瀏覽器執行已實測可行，完整私密登入仍缺人機接管入口。** 一般指令沙箱內的 Chromium 啟動失敗，實際錯誤是 helper 所見擁有者不符；user namespace 替代在該執行路徑也失敗。經平台標準核准的執行路徑重試後成功，沒有使用 `--no-sandbox`，沒有停用 TLS 驗證；`chrome://sandbox` 顯示 Namespace、PID／Network namespace、Seccomp-BPF／TSYNC 啟用，TradingView Pine Editor 回應 HTTP 200。Yama ptrace protection 顯示 No；這不是完整主機／帳戶隔離認證。沒有登入、讀憑證或開公開 listener。詳見 [最新測試紀錄](TRADINGVIEW-ACCESS-CONFIG.json)。
+
+可用工具仍沒有 Browser takeover、遠端桌面、經身分驗證的 private preview／ingress，不能提供你現在能操作的登入網址。已詢問 Codex 客戶端是否另有 Browser／Desktop／Ports 入口；那是工具目前無法觀察的部分，不能斷言所有 Codex 版本都沒有此功能。
+
+已讀 runtime 的 VPN 指引：目前 VPN 未配置、沒有 TCP grants；該機制支援雲端向外連接，明列不支援 inbound connections。啟用 VPN 或安裝 VNC 本身不會產生你能登入此容器的私密入口。沒有已核實的入站通道前，不部署公開 VNC／CDP、不使用臨時公網反向隧道，不改成要求密碼／Cookie 匯入。
+
+下一個具體需求是平台提供**綁定此環境、只有目前使用者可存取、可接管並撤銷的互動瀏覽器／桌面或已驗證的 HTTPS 私密入口**。得到入口後，可先用無帳號畫面驗證存取與退出，再由使用者在真正 TradingView 頁面登入／2FA，由 Agent 接續研究。網路草稿仍未反映到 runtime；發布 allowlist 也不會自動新增這個登入入口。
+
 **結論：目前 AutoStrat 雲端尚未具備可驗證的私密登入接管能力，不能稱為已可安全托管 TradingView 主帳號的封閉環境。** 已完成設定與能力檢查、Git 忽略保護及可交接方案；沒有登入、讀取憑證、建立公開遠端桌面或啟動實盤。
 
 ## 已觀察事實與未知
@@ -13,17 +25,17 @@
 | 登入能力 | 有 Chromium／Playwright；沒有可呼叫的瀏覽器接管工具或已提供的人機登入介面 | headless 自動化能力不等於能安全接收使用者登入。沒有官方 TradingView Connector 可直接啟用。 |
 | 憑證配置 | 工具未列 TradingView secret／identity，指定 TV 變數不存在 | 不讀任何憑證值；不能由此推論整個環境絕無其他機密。GitHub 既有授權正常，無需提供 PAT。 |
 | 本地檔案檢查 | 當前 80 個 tracked 檔，76 個文字檔檢查未發現所列常見金鑰模式或登入狀態檔名 | 範圍不含完整 Git 歷史、所有格式或完整資安稽核；不能保證零洩漏。 |
-| 瀏覽器 sandbox | 明確要求 Chromium sandbox 的新匿名啟動未成功，未取得可確認原因 | 未用關閉 sandbox 當成登入解法；此檢查不能證明其他受管瀏覽器的安全性或不可用。 |
+| 瀏覽器 sandbox | 一般指令路徑失敗；後續標準核准路徑成功，Namespace／Seccomp 啟用且 TLS 保留 | 修正了前次原因未明的狀態；匿名瀏覽可行不等於已有人工接管或帳戶安全認證。 |
 | 遠端入口 | 所檢查的常見桌面／debug／應用連接埠沒有本地 listener | 沒有檢查平台全部 ingress／防火牆；不是完整外網滲透測試。未架設 VNC、CDP 或公開隧道。 |
-| 平台存取與保存 | 目前工具無法查完整成員 ACL、平台管理員範圍、加密／備份／保留政策 | 已詢問環境是否共享，尚待使用者回答。沒有把「只有本人使用」當成已證實。 |
+| 平台存取與保存 | 使用者確認只有本人存取；工具無法查平台管理員範圍、加密／備份／保留政策 | 個人使用狀況已確認；平台基礎設施與登入保存仍不能據此保證。 |
 
 `.gitignore` 已加入常見 auth／browser profile／storageState／HAR 等排除規則，並檢查正常研究檔仍可追蹤。**忽略規則只是減少誤提交，不是秘密保管庫**；無法阻止 `git add -f`、已追蹤檔、改名憑證、終端輸出或環境快照。不能把含登入狀態的目錄納入雲端 Publish／備份；刪除工作檔也不能證明既有快照已刪除。
 
-## 建議路徑：受管瀏覽器人工登入後交回 Agent
+## 備選紀錄：ChatGPT Agent（使用者目前沒有此模式）
 
 OpenAI 官方 [ChatGPT agent 說明](https://help.openai.com/en/articles/11752874-chatgpt-agent)記載：需要登入時，可由使用者 `Take over browser`；接管期間不截圖，交回後 Agent 再繼續。官方也明示 Cookie 會跨工作階段保留，可透過登出及 ChatGPT 資料控制清除；Agent 執行時會使用畫面截圖，相關保存與模型改善設定依帳戶方案／資料控制處理。
 
-若使用者目前的工具選單已有 Agent 模式，這是比自架雲端登入桌面更小的下一步，不需要先買新服務。**本聊天室沒有這個接管工具，也不能自行切換到該模式；方案可用性與實際 TradingView 相容性尚未驗證。** 登入成功也不保證網站允許或能完成所有自動化操作；遇 CAPTCHA／帳號保護，由人工完成，不繞過。
+這是先前查到的產品能力紀錄；使用者已回覆目前沒有 Agent 模式，因此不再要求切換或購買它。**本聊天室沒有這個接管工具，也不能自行切換到該模式；實際 TradingView 相容性尚未驗證。** 登入成功也不保證網站允許或能完成所有自動化操作；遇 CAPTCHA／帳號保護，由人工完成，不繞過。
 
 最小流程：
 
