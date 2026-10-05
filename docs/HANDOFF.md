@@ -1,6 +1,15 @@
 # 下個工作階段從這裡開始
 
-更新：2026-10-04（台北），最新自主研究授權之後。當前入口為 **`research/cycles/tmf-002/experiments/a2/REPORT.md`**。完成 A2 研究原型與合成驗證；原生編譯及微台績效尚未執行。持續背景 Agent 尚未實作。
+更新：2026-10-05（台北）。最新任務是減少人工 TradingView 驗證負擔，建立安全的登入接管方案，入口 **`docs/TRADINGVIEW-ACCESS.md`**。A2 研究入口仍為 `research/cycles/tmf-002/experiments/a2/REPORT.md`；原生編譯／微台績效未執行。
+
+## 登入協作與安全查核
+
+- 使用者希望 Agent 自行完成登入後研究，人工只處理必要登入／2FA／批准；不再交回整份 NATIVE-RUN 要使用者逐項操作。
+- 本 repo 於 10/5 由 GitHub API 確認 public；網路 runtime 為 unrestricted、enforcement unknown。沒有可用的私密瀏覽器接管工具，不能聲稱雲端足夠封閉或已能安全托管主帳號。共享成員／保存／備份權限未由工具核實，已詢問使用者。
+- 官方 ChatGPT Agent 文件支援 Take over browser，由人工登入、Agent 接續；那是另一個執行位置，本聊天室不能自行啟用。已詢問使用者工具選單是否有 Agent 模式，尚待回覆。接續指令在 `docs/TRADINGVIEW-AGENT-HANDOFF.md`，跨 Agent 自動回傳尚未建好。
+- 新增 Git auth/profile/HAR 忽略保護，18 個敏感路徑與 4 個正常路徑測試通過；目前 tracked tree 的有限常見憑證模式掃描未發現匹配，不是完整歷史或資安認證。
+- 已保存並讀回確認：restricted 網域草稿、start_skill，以及取代早期需求文字的 install_script；後者實際執行通過 Node/Python 前置與既有 8/8 整合測試及 Worker 建置。A2 25/25 合成測試亦通過。設定尚未由使用者儲存／發布，runtime 未變；細節在 CONFIG 紀錄，無新增 secrets。
+- 下一步先取得共享權限／Agent 模式可用性資訊及完成環境設定發布，再查 runtime enforcement。沒有私密接管前不收憑證、不匯入 Cookie、不公開 VNC/CDP、不代開新付費服務。若必須留在此雲端，需受管私有瀏覽器執行端，尚未部署。
 
 ## 最新授權與實際進度
 
@@ -28,7 +37,7 @@ API 支援持久保存、擁有者隔離、版本衝突、冪等請求、任務�
 1. 先讀 `research/cycles/tmf-002/experiments/a2/REPORT.md`、SPEC 與 NATIVE-RUN。舊 REVIEW-A 的等待確認不是現行授權；A2 已自主修改原 v1，不把它當等價轉譯。
 2. 本地可用 `python3 research/cycles/tmf-002/experiments/a2/verify.py` 重跑合成／資料包檢查，必要時 `--project` 同跑既有開發檢查。通過只支持列出的功能，不支持交易有效性。
 3. 優先接續已有權使用的 TradingView 原生編譯／訊號與成交對帳，再用相同事件比較 Retest 與 Direct。當前缺口是本雲端無可用登入工作階段，不是等待策略細節批准；不索取密碼／Cookie，不使用隔離行情或改查其他供應商。
-4. 若仍無原生操作能力，精確回報未執行事項及最小協助。可由使用者在自己的 TradingView 操作現成原型並提供可讀結果；不得說 Agent 已在背景持續研究或保證不用協助就能操作帳號。
+4. 若仍無原生操作能力，依最新 ACCESS 方案取得人機私密接管；不要再要求使用者自行跑完整策略驗證。沒有接管能力就明列缺口，不得說 Agent 已登入或在背景持續研究。
 5. 原工作台功能需要時使用 `npm run dev`；本輪未讀網站資料庫，沒有更新 UI 任務。研究成果與目前進度以 GitHub 檔案／提交為準。
 
 ## 未完成與限制

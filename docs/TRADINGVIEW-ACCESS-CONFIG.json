@@ -1,0 +1,81 @@
+{
+  "review_date_taipei": "2026-10-05",
+  "scope": "sanitized setup/security evidence; no account credentials or platform identifiers",
+  "base_commit": "204119cbdd00870baa61303a0399173d3d58cfbf",
+  "saved_fields": [
+    "network.allowed_domains",
+    "start_skill",
+    "install_script"
+  ],
+  "draft_saved": true,
+  "draft_contents_read_back_and_matched": true,
+  "requires_publish": true,
+  "network_draft": {
+    "mode": "restricted",
+    "custom_allowed_domains": [
+      "*.tradingview.com",
+      "api.github.com",
+      "github.com",
+      "help.openai.com",
+      "playwright.dev",
+      "raw.githubusercontent.com",
+      "tradingview.com",
+      "www.taifex.com.tw"
+    ],
+    "presets": [],
+    "purpose": "restrict code/research executor egress; not an authenticated-browser isolation boundary"
+  },
+  "runtime_observed_after_save": {
+    "observations_current": true,
+    "network_policy": {
+      "mode": "unrestricted",
+      "state": "unknown"
+    },
+    "private_browser_takeover_available": false,
+    "tradingview_login_configured": false
+  },
+  "secrets_added": 0,
+  "repository_visibility_changed": false,
+  "paid_services_used": false,
+  "remote_browser_endpoint_created": false,
+  "install_script": "#!/usr/bin/env bash\nset -euo pipefail\ncd /workspace/AutoStrat-Bot\nnode --input-type=module -e 'if (Number(process.versions.node.split(\".\")[0]) < 24) throw new Error(\"AutoStrat requires Node 24 or newer\");'\npython3 -c 'import jsonschema'\nnpm run verify\n",
+  "start_skill": "Use the existing checkout at /workspace/AutoStrat-Bot. This managed cloud task is already isolated; do not create a Git worktree unless the user explicitly requests one.\nRead AGENTS.md, docs/HANDOFF.md, docs/PROJECT.md and docs/TRADINGVIEW-ACCESS.md. Preserve existing work; inspect git status before changes.\nUse Node 24. The application needs no npm install. Verify with npm run verify from the checkout; this runs the existing integration tests and Worker build. For A2 synthetic logic without overwriting historical reports, run node --test research/cycles/tmf-002/experiments/a2/reference.test.mjs. Passing these checks is not Pine compilation or TMF performance validation.\nIf the application is needed, run npm run dev from the checkout. It binds to 127.0.0.1:4173. Validate with a local request; do not create a public preview, tunnel, browser-debug endpoint or user-facing localhost link.\nBefore network/authentication work, use cloud-environment-runtime guidance and environment_status. Desired restrictions or a saved draft do not prove enforcement. Recheck runtime network state after publication. Preserve TLS validation and inherited proxy settings; do not bypass destination policy.\nNo TradingView credentials or browser sessions are configured by this setup. This cloud chat currently lacks private human browser takeover. Do not request passwords, OTPs, recovery codes, cookies or tokens in chat; do not import a user browser profile or add raw login secrets as a workaround.\nKeep authenticated browser execution separate from GitHub writing and general repository code. Do not store browser auth state inside the repo, workspace snapshots, artifacts, logs or published configuration. Gitignore is not a security boundary. Do not publish/snapshot an environment containing logged-in browser state.\nUse only a supported private takeover mechanism for human login/2FA. Verify access isolation, retention, revocation and output handling first. No persistent credentials, new paid service, broker connection, real orders, competition registration, community publication, alerts/webhooks or account/security-setting changes are authorized by this setup.\nComplete independent research/code work and report the concrete missing capability if takeover is unavailable. Do not shift the entire native validation protocol back to the user or claim autonomous execution is ready.\n",
+  "validation": {
+    "application_integration": {
+      "passed": 8,
+      "failed": 0,
+      "worker_build": "passed"
+    },
+    "a2_synthetic_logic": {
+      "passed": 25,
+      "failed": 0,
+      "native_compilation_or_market_backtest": false
+    },
+    "git_ignores": {
+      "sensitive_path_probes_passed": 18,
+      "ordinary_research_path_probes_passed": 4,
+      "no_credentials_created": true
+    },
+    "tracked_worktree_secret_scan": {
+      "tracked_paths": 80,
+      "text_files": 76,
+      "sensitive_filenames_found": 0,
+      "known_token_pattern_matches": 0,
+      "full_git_history_scanned": false,
+      "scope_limitation": "Pattern-based current tracked tree scan only; not a guarantee or full security audit"
+    },
+    "authenticated_takeover": "not_available_here; not_tested",
+    "post_publication_egress_allow_deny": "not_run; runtime remains unrestricted"
+  },
+  "outstanding": [
+    "confirm environment sharing/access controls",
+    "confirm whether user has existing ChatGPT Agent mode",
+    "review/save/publish environment draft then verify runtime enforcement and permitted/denied destinations",
+    "verify private browser takeover and account/session data handling before any credentialed run"
+  ],
+  "excluded_from_repository": [
+    "credentials, cookie/session exports, browser profiles",
+    "raw environment identifiers, proxy details, full status/config outputs",
+    "full third-party webpages and original request text from old install field"
+  ]
+}

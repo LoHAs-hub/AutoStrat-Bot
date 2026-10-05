@@ -1,5 +1,7 @@
 # 專案總體規格 v0.1
 
+2026-10-05 登入協作更新：原生 TradingView 檢查應由具備私密瀏覽器接管能力的 Agent 執行，人工只處理登入／2FA及必要批准。方案與實際能力限制見 [TRADINGVIEW-ACCESS](TRADINGVIEW-ACCESS.md)；目前未登入，沒有安全托管主帳號或跨 Agent 自動同步能力。GitHub public 與雲端存取隔離是不同問題，兩者都不能靠 `.gitignore` 或網域 allowlist 單獨保證。
+
 ## 目標與已確認決策
 
 建構能累積有來源的交易知識、運用使用者原則、提出可驗證策略的 Agent 系統。只研究 **TAIFEX 微型台指期貨 TMF**。使用者已釐清原本的 MXF1! 連結不是最終研究商品；tmf-001 已找到 TradingView 公開商品頁 TAIFEX:TMF1!，實際資料使用權與換月/復權設定仍待查核。

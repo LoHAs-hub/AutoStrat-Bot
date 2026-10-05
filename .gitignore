@@ -7,3 +7,22 @@ dist/
 .sites-runtime/
 .wrangler/
 artifacts/
+
+# Authentication state belongs outside the repository, even if GitHub is private.
+.auth/
+.private/
+.autostrat-auth/
+playwright/.auth/
+browser-profile/
+browser-profiles/
+chrome-profile/
+**/storageState*.json
+**/storage-state*.json
+**/storage_state*.json
+**/Cookies
+**/Cookies-journal
+**/Login Data
+**/Login Data-journal
+**/Local State
+*.har
+*.trace.zip
